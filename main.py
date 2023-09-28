@@ -8,6 +8,7 @@ GIF_CONVERSION = 4
 
 lines = 30
 INPUT_DIRECTORY = "./input"
+OUTPUT_DIRECTORY = "./output"
 
 def line_wrap_print(mes):
     """
@@ -24,6 +25,19 @@ def print_menu(string_arr):
     for i in range(len(string_arr)):
         line_wrap_print(string_arr[i])
     print("-" * lines)
+
+def intaractive_shell():
+    """
+        対話的にメニューを表示して、動画の変換を行う
+    """
+    # メニューを表示する
+    select = input_loop_initial_menu()
+
+    if select == COMPRESSION: compression_main()
+    elif select == RESOLUTION: resolution_main()
+    elif select == AUDIO_CONVERSION: audio_conversion_main()
+    elif select == GIF_CONVERSION: gif_conversion_main()
+
 
 def print_initial_menu():
     """
@@ -92,25 +106,43 @@ def print_gif_conversion_menu():
 def gif_conversion_main():
     pass
 
-def list_input_file() -> list:
+def ls_input_directory() -> list:
     """
         inputフォルダの内容を配列にする
     """
     contents = os.listdir(INPUT_DIRECTORY)
     return contents
 
-def intaractive_shell():
+def print_input_directory():
     """
-        対話的にメニューを表示して、動画の変換を行う
+        inputフォルダの内容を表示する
     """
-    # メニューを表示する
-    select = input_loop_initial_menu()
+    contents = ls_input_directory()
+    while True:
+        print_menu(contents)
+        
 
-    if select == COMPRESSION: compression_main()
-    elif select == RESOLUTION: resolution_main()
-    elif select == AUDIO_CONVERSION: audio_conversion_main()
-    elif select == GIF_CONVERSION: gif_conversion_main()
 
+
+def has_input_directory(contents, name):
+    """
+        指定のファイルがinputフォルダにあるか確認する
+    """
+    for item in contents:
+        if name == item: return True
+    return False
+
+def test_has_input_directory():
+    contents = ls_input_directory()
+    while True:
+        print_menu(contents)
+        name = input("> ")
+        t = has_input_directory(contents, name)
+        if t : break
+        print(t)
+    print(t)
 
 if __name__ == "__main__":
-    intaractive_shell()
+    # intaractive_shell()
+    # print_input_directory()
+    test_has_input_directory()
