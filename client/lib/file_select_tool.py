@@ -30,3 +30,13 @@ def has_input_directory(contents, name):
     for item in contents:
         if name == item: return True
     return False
+
+def input_output_file_name(extension) -> str:
+    """
+        outputファイル名を指定してもらう
+    """
+    while True:
+        print("output時のファイル名を指定してください。(指定ない場合はqを入力)")
+        filename = input("> ")
+        if filename == "q": return "output" + extension
+        return filename
