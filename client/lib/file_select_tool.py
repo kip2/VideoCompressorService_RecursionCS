@@ -1,5 +1,5 @@
 import os
-from print_tool import *
+from lib.print_tool import *
 
 INPUT_DIRECTORY = "./input"
 

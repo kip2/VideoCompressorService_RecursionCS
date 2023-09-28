@@ -1,4 +1,4 @@
-from print_tool import *
+from lib.print_tool import *
 
 # initial_menu
 COMPRESSION = 1
