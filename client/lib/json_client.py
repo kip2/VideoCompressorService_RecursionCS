@@ -12,9 +12,8 @@ SERVER_ADDRESS = lib._address_config.SERVER_ADDRESS
 JSON_SERVER_PORT = lib._address_config.JSON_SERVER_PORT
 
 # json save directory
-JSON_DIRECTORY_PATH = "json"
-# todo: recieve test用
-# JSON_DIRECTORY_PATH = "temp"
+# JSON_DIRECTORY_PATH = "json"
+JSON_DIRECTORY_PATH = "temp"
 
 # header size
 HEADER_SIZE = JSON_HEADER_SIZE

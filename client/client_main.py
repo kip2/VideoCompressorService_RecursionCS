@@ -29,7 +29,6 @@ def intaractive_shell():
     elif select == AUDIO_CONVERSION: audio_conversion_main()
     elif select == GIF_CONVERSION: gif_conversion_main()
 
-
 # todo: 以下、メニューごとに、JSONファイルにするのに必要なことを対話的に聞くようにすること
 # todo: とにかくjsonファイルを作る目的でいけばかなり素早くコードが書けると思う
 # todo: 全て、4つの関数はjsonを返すようにする。それを持って、あとは受け渡しするためのソケットクライアントを一つだけ作成して、その窓口を通してサーバーに渡すことにする
