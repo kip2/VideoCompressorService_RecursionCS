@@ -2,9 +2,24 @@ from lib.ffmpeg_tool import *
 from lib._header import *
 from lib.json_tool import *
 from lib.json_server import *
+from lib.file_server import *
+
+def main():
+    filename = json_receive()
+
+    # filepathを作成する
+    filepath = "tmp/" + filename
+
+    # jsonのパース
+    command = json_parser(filepath)
+
+    pass
 
 def json_receive():
-    pass
+    """
+        jsonを受け取る処理
+    """
+    recieve_json_server()
 
 def json_parser(filepath:str) -> list:
     """
@@ -23,8 +38,12 @@ def json_parser(filepath:str) -> list:
 
     return command
 
-
 def file_receive():
+    """
+        fileを受け取る処理
+    """
+    filename = recieve_file_server()
+    
     pass
 
 def send_converted_file(filepath):

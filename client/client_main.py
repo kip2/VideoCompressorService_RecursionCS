@@ -6,6 +6,7 @@ from lib.file_select_tool import *
 from lib.audio_convert_menu import *
 from lib.gif_convert_menu import *
 from lib.json_client import *
+from lib.file_client import *
 
 # initial_menu
 COMPRESSION = 1
@@ -73,11 +74,17 @@ def test_send_json_file():
     filepath = JSON_DIRECTORY_PATH + "/" + "audio_convert.json"
     send_json_client(filepath)
 
+def test_send_file():
+    filepath = FILE_DIRECTORY_PATH + "/" + "nc53235.mp4"
+    send_file_client(filepath)
+
+
 if __name__ == "__main__":
     # intaractive_shell()
     # print_input_directory()
     # test_has_input_directory()
     # audio_conversion_main()
     # input_fps()
-    test_send_json_file()
+    # test_send_json_file()
+    test_send_file()
     pass

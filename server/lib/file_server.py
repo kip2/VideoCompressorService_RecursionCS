@@ -13,13 +13,13 @@ JSON_SERVER_PORT = lib._address_config.JSON_SERVER_PORT
 
 # json save directory
 # JSON_DIRECTORY_PATH = "json"
-JSON_DIRECTORY_PATH = "tmp"
+FILE_DIRECTORY_PATH = "recieved_file"
 
 # header size
 HEADER_SIZE = JSON_HEADER_SIZE
 
 
-def send_json_server(filepath):
+def send_file_server(filepath):
     """
         filepathのjsonファイルを送信する
     """
@@ -50,7 +50,7 @@ def send_json_server(filepath):
                 data = f.read(4096)
     print("Closing socket")
 
-def recieve_json_server() -> str:
+def recieve_file_server():
     with TCP_Server(JSON_SERVER_PORT) as s:
         # create json directory
         create_json_directory()
@@ -67,11 +67,11 @@ def recieve_json_server() -> str:
             filename = connection.recv(filename_length).decode(CHARA_CODE)
 
             if json_length != 0:
-                raise Exception("JSON data is not currently supported.")
+                raise Exception("This data is not currently supported.")
             if data_length == 0:
                 raise Exception("No data to read from client.")
 
-            with open(os.path.join(JSON_DIRECTORY_PATH, filename), "wb+") as f:
+            with open(os.path.join(FILE_DIRECTORY_PATH, filename), "wb+") as f:
                 while data_length > 0:
                     data = connection.recv(data_length if data_length <= stream_rate else stream_rate)
                     f.write(data)
@@ -88,14 +88,9 @@ def create_json_directory():
     """
         json受け渡しをするjsonフォルダを作成する
     """
-    if not os.path.exists(JSON_DIRECTORY_PATH):
-        os.makedirs(JSON_DIRECTORY_PATH)
+    if not os.path.exists(FILE_DIRECTORY_PATH):
+        os.makedirs(FILE_DIRECTORY_PATH)
 
 if __name__ == "__main__":
-    # print("Hello")
-    # recieve_json_server()
-    # filepath = JSON_DIRECTORY_PATH + "/" +  "room_list.json"
-    # filepath = JSON_DIRECTORY_PATH + "/" + 
-    # send_json_server(filepath)
-    recieve_json_server()
+    recieve_file_server()
     pass
