@@ -75,7 +75,7 @@ def recieve_json_server() -> str:
                 while data_length > 0:
                     data = connection.recv(data_length if data_length <= stream_rate else stream_rate)
                     f.write(data)
-                    print(f"recieved {len(data)} bytes")
+                    # print(f"recieved {len(data)} bytes")
                     data_length -= len(data)
                     print(data_length)
 

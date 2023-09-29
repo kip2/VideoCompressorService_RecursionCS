@@ -30,7 +30,7 @@ def recieve_file_client(directory_path):
             filename = c.sock.recv(filename_length).decode(CHARA_CODE)
 
             if json_length != 0:
-                raise Exception("JSON data is not currently supported.")
+                raise Exception("This data is not currently supported.")
             if data_length == 0:
                 raise Exception("No data to read from client.")
 
@@ -69,7 +69,7 @@ def send_file_client(filepath):
 
             data = f.read(4096)
             while data:
-                print("Sending...")
+                # print("Sending...")
                 c.sock.send(data)
                 data = f.read(4096)
 

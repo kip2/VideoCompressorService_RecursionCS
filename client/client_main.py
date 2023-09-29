@@ -1,3 +1,4 @@
+import time
 import os
 from lib.json_tool import *
 from lib.print_tool import *
@@ -78,6 +79,10 @@ def test_send_file():
     filepath = FILE_DIRECTORY_PATH + "/" + "nc53235.mp4"
     send_file_client(filepath)
 
+def test_send_json_and_file():
+    test_send_json_file()
+    time.sleep(5)
+    test_send_file()
 
 if __name__ == "__main__":
     # intaractive_shell()
@@ -86,5 +91,5 @@ if __name__ == "__main__":
     # audio_conversion_main()
     # input_fps()
     # test_send_json_file()
-    test_send_file()
+    test_send_json_and_file()
     pass

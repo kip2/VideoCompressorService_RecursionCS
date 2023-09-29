@@ -4,22 +4,50 @@ from lib.json_tool import *
 from lib.json_server import *
 from lib.file_server import *
 
-def main():
-    filename = json_receive()
+import shutil
 
-    # filepathを作成する
-    filepath = "tmp/" + filename
+import time
+
+def main():
+    # jsonの受け取り
+    json_file_name = json_receive()
+
+    time.sleep(1)
+
+    # fileの受け取り
+    recieved_file_name = file_receive()
+
+    # jsonのfileパスを作成する
+    json_filepath = "tmp/" + json_file_name
+    # 受け取ったfile本体のパスを作成
+    recieved_filepath = "tmp/" + recieved_file_name
 
     # jsonのパース
-    command = json_parser(filepath)
+    command = json_parser(json_filepath)
+    
+    # 処理を行う
+    run_ffmpeg(command)
 
+    # JSONの送信処理
+    
+    # fileの送信処理
+
+    # 最後に、受け取ったJSONと受け取ったファイルを削除する処理がいる
+    clear_tmp_directory()
     pass
+
+def clear_tmp_directory():
+    """
+        tmpディレクトリを削除する処理
+    """
+    target_dir = "tmp"
+    shutil.rmtree(target_dir)
 
 def json_receive():
     """
         jsonを受け取る処理
     """
-    recieve_json_server()
+    return recieve_json_server()
 
 def json_parser(filepath:str) -> list:
     """
@@ -42,9 +70,7 @@ def file_receive():
     """
         fileを受け取る処理
     """
-    filename = recieve_file_server()
-    
-    pass
+    return recieve_file_server()
 
 def send_converted_file(filepath):
     pass
@@ -63,11 +89,13 @@ def test_command_run():
     run_ffmpeg(command)
 
 def test_json_server():
+    # OK
     recieve_json_server()
 
 if __name__ == "__main__":
     # test_command_run()
     # test_command_generation_gif_conversion()
     # test_gif_convert()
-    test_json_server()
-    pass
+    # test_json_server()
+    main()
+    # clear_tmp_directory()

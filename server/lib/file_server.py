@@ -13,7 +13,7 @@ JSON_SERVER_PORT = lib._address_config.JSON_SERVER_PORT
 
 # json save directory
 # JSON_DIRECTORY_PATH = "json"
-FILE_DIRECTORY_PATH = "recieved_file"
+FILE_DIRECTORY_PATH = "tmp"
 
 # header size
 HEADER_SIZE = JSON_HEADER_SIZE
@@ -53,7 +53,7 @@ def send_file_server(filepath):
 def recieve_file_server():
     with TCP_Server(JSON_SERVER_PORT) as s:
         # create json directory
-        create_json_directory()
+        create_file_directory()
 
         connection, client_address = s.sock.accept()
         try:
@@ -75,7 +75,7 @@ def recieve_file_server():
                 while data_length > 0:
                     data = connection.recv(data_length if data_length <= stream_rate else stream_rate)
                     f.write(data)
-                    print(f"recieved {len(data)} bytes")
+                    # print(f"recieved {len(data)} bytes")
                     data_length -= len(data)
                     print(data_length)
 
@@ -84,9 +84,9 @@ def recieve_file_server():
             print("Error: " + str(e))
     return filename
         
-def create_json_directory():
+def create_file_directory():
     """
-        json受け渡しをするjsonフォルダを作成する
+        file受け渡しをする fileフォルダを作成する
     """
     if not os.path.exists(FILE_DIRECTORY_PATH):
         os.makedirs(FILE_DIRECTORY_PATH)

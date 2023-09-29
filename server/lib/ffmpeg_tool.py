@@ -20,10 +20,10 @@ def command_generation_audio_conversion(json_dict: dict) -> list:
         mp4をmp3に変換するffmpegコマンドを作成する
     """
     # dictをパースする
-    input_file_path = "input/" + json_dict["input"]
+    input_file_path = "tmp/" + json_dict["input"]
     output_file_path = "output/" + json_dict["output"]
 
-    # command
+    # commandを作成
     # ffmpeg -i input_file_name -vn output_file_name
     command = [
         "ffmpeg",
@@ -40,14 +40,14 @@ def command_generation_gif_conversion(json_dict:dict) -> list:
     """
 
     # dictをパースする
-    input_file_path = "input/" + json_dict["input"]
+    input_file_path = "tmp/" + json_dict["input"]
     output_file_path = "output/" + json_dict["output"]
     start_time = json_dict["start_time"]
     end_time = json_dict["end_time"]
     fps = json_dict["end_time"]
     scale = "scale="+json_dict["video_size"]+":-1"
 
-    # command
+    # commandを作成
     # ffmpeg -ss 00:00:20 -i input.mp4 -to 10 -r 10 -vf scale=300:-1 output.gif
     command = [
         "ffmpeg",
