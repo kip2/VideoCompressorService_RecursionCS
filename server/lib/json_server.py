@@ -12,9 +12,8 @@ SERVER_ADDRESS = lib._address_config.SERVER_ADDRESS
 JSON_SERVER_PORT = lib._address_config.JSON_SERVER_PORT
 
 # json save directory
-JSON_DIRECTORY_PATH = "json"
-# todo: recieve test用
-# JSON_DIRECTORY_PATH = "temp"
+# JSON_DIRECTORY_PATH = "json"
+JSON_DIRECTORY_PATH = "temp"
 
 # header size
 HEADER_SIZE = JSON_HEADER_SIZE
@@ -94,6 +93,7 @@ def create_json_directory():
 if __name__ == "__main__":
     # print("Hello")
     # recieve_json_server()
-    filepath = JSON_DIRECTORY_PATH + "/" +  "room_list.json"
-    send_json_server(filepath)
+    # filepath = JSON_DIRECTORY_PATH + "/" +  "room_list.json"
+    # filepath = JSON_DIRECTORY_PATH + "/" + 
+    # send_json_server(filepath)
     pass
