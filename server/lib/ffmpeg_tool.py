@@ -2,6 +2,39 @@ import subprocess
 
 OUTPUT_DIRECTORY = "tmp"
 
+def compression_mp4():
+    """
+        mp4を圧縮する
+    """
+    command = [
+        
+    ]
+
+    subprocess.run(command)
+    pass
+
+def resolution_mp4():
+    """
+        mp4の解像度を変更する
+    """
+    command = [
+        
+    ]
+
+    subprocess.run(command)
+    pass
+
+def convert_mp4_to_gif():
+    """
+        mp4を時間指定してgifに変換する
+    """
+    command = [
+        
+    ]
+
+    subprocess.run(command)
+    pass
+
 def convert_mp4_to_mp3(input_file_name, output_file_name):
     """
         mp4をmp3に変換するメソッド
