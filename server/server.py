@@ -1,6 +1,7 @@
 from lib.ffmpeg_tool import * 
 from lib._header import *
 from lib.json_tool import *
+from lib.json_server import *
 
 def json_receive():
     pass
@@ -42,8 +43,12 @@ def test_command_run():
     command = test_json_parser()
     run_ffmpeg(command)
 
+def test_json_server():
+    recieve_json_server()
+
 if __name__ == "__main__":
     # test_command_run()
     # test_command_generation_gif_conversion()
-    test_gif_convert()
+    # test_gif_convert()
+    test_json_server()
     pass

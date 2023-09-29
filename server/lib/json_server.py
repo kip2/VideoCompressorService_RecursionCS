@@ -96,4 +96,5 @@ if __name__ == "__main__":
     # filepath = JSON_DIRECTORY_PATH + "/" +  "room_list.json"
     # filepath = JSON_DIRECTORY_PATH + "/" + 
     # send_json_server(filepath)
+    recieve_json_server()
     pass

@@ -76,6 +76,8 @@ def send_json_client(filepath):
 if __name__ == "__main__":
     # filepath = JSON_DIRECTORY_PATH + "/" +  "room_list.json"
     # send_json_client(filepath)
-    recieve_json_client(JSON_DIRECTORY_PATH)
+    # recieve_json_client(JSON_DIRECTORY_PATH)
+    filepath = JSON_DIRECTORY_PATH + "/" + "audio_convert.json"
+    send_json_client(filepath)
     pass
 

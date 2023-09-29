@@ -5,6 +5,7 @@ from lib.initial_menu import *
 from lib.file_select_tool import *
 from lib.audio_convert_menu import *
 from lib.gif_convert_menu import *
+from lib.json_client import *
 
 # initial_menu
 COMPRESSION = 1
@@ -66,6 +67,11 @@ def test_has_input_directory():
         print(t)
     print(t)
 
+def test_send_json_file():
+    # OK
+    # jsonディレクトリはclient内にないといけない
+    filepath = JSON_DIRECTORY_PATH + "/" + "audio_convert.json"
+    send_json_client(filepath)
 
 if __name__ == "__main__":
     # intaractive_shell()
@@ -73,4 +79,5 @@ if __name__ == "__main__":
     # test_has_input_directory()
     # audio_conversion_main()
     # input_fps()
+    test_send_json_file()
     pass
