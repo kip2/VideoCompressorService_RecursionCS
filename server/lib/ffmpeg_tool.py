@@ -2,55 +2,68 @@ import subprocess
 
 OUTPUT_DIRECTORY = "tmp"
 
-def compression_mp4():
-    """
-        mp4を圧縮する
-    """
-    command = [
-        
-    ]
 
-    subprocess.run(command)
+def command_generation_compression(json_dict: dict) -> list:
+    """
+        mp4を圧縮するコマンドを生成
+    """
     pass
 
-def resolution_mp4():
+def command_generation_resolution(json_dict: dict) -> list:
     """
-        mp4の解像度を変更する
+        mp4の解像度を変更するコマンドを生成
     """
-    command = [
-        
-    ]
-
-    subprocess.run(command)
     pass
 
-def convert_mp4_to_gif():
+def command_generation_audio_conversion(json_dict: dict) -> list:
     """
-        mp4を時間指定してgifに変換する
+        mp4をmp3に変換するffmpegコマンドを作成する
     """
-    command = [
-        
-    ]
+    # dictをパースする
+    input_file_path = "input/" + json_dict["input"]
+    output_file_path = "output/" + json_dict["output"]
 
-    subprocess.run(command)
-    pass
-
-def convert_mp4_to_mp3(input_file_name, output_file_name):
-    """
-        mp4をmp3に変換するメソッド
-    """
     # command
     # ffmpeg -i input_file_name -vn output_file_name
     command = [
         "ffmpeg",
         "-i",
-        input_file_name,
+        input_file_path,
         "-vn",
-        output_file_name
+        output_file_path
     ]
+    return command
 
-    # コマンドの実行
-    subprocess.run(command)
+def command_generation_gif_conversion(json_dict:dict) -> list:
+    """
+        mp4をgifに変換するffmpegコマンドを作成する
+    """
+
+    # dictをパースする
+    input_file_path = "input/" + json_dict["input"]
+    output_file_path = "output/" + json_dict["output"]
+    start_time = json_dict["start_time"]
+    end_time = json_dict["end_time"]
+    fps = json_dict["end_time"]
+    scale = "scale="+json_dict["video_size"]+":-1"
+
+    # command
+    # ffmpeg -ss 00:00:20 -i input.mp4 -to 10 -r 10 -vf scale=300:-1 output.gif
+    command = [
+        "ffmpeg",
+        "-ss",
+        start_time,
+        "-i",
+        input_file_path,
+        "-to",
+        end_time,
+        "-r",
+        fps,
+        "-vf",
+        scale,
+        output_file_path
+    ]
+    return command
 
 def run_ffmpeg(command):
     """
@@ -59,11 +72,38 @@ def run_ffmpeg(command):
     # コマンドの実行
     subprocess.run(command)
 
+#------------------------------------------------------------
 
 def test_convert_mp4_to_mp3():
     input_file_name = "input/nc53235.mp4"
     output_file_name = "output/output.mp3"
-    convert_mp4_to_mp3(input_file_name, output_file_name)
+    # convert_mp4_to_mp3(input_file_name, output_file_name)
+
+def mock_gif_dict():
+    mock_dict = {
+        # "input": "nc53235.mp4",
+        "input": "testmov.mp4",
+        "output": "test_gif.gif",
+        # todo: 固定する横幅のサイズをクライアント側で聞いたら良さそう
+        "video_size": "300",
+        "fps": "10",
+        "start_time": "00:00:05",
+        "end_time": "10"
+    }
+    return mock_dict
+
+def test_command_generation_gif_conversion():
+    # OK
+    mock_dict = mock_gif_dict()
+    command_generation_gif_conversion(mock_dict)
+
+def test_gif_convert():
+    # OK
+    mock_dict = mock_gif_dict()
+    command = command_generation_gif_conversion(mock_dict)
+    run_ffmpeg(command)
+
 
 if __name__ == "__main__":
-    test_convert_mp4_to_mp3()
+    # test_convert_mp4_to_mp3()
+    pass
