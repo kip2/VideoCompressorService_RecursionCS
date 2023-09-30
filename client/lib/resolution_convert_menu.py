@@ -1,5 +1,7 @@
 from lib.file_select_tool import *
 
+RATIO_4_3 = 1
+RATIO_16_9 = 2
 
 def resolution_main():
     """
@@ -26,18 +28,23 @@ def resolution_main():
 def input_resolution():
 
     # select ratio
-
+    ratio = select_ratio()
 
     # 4:3
+    if ratio == RATIO_4_3:
+        pass
 
     # 16:9
+    elif ratio == RATIO_16_9:
+        pass
 
     pass
 
-RATIO_4_3 = 1
-RATIO_16_9 = 2
 
-def select_ratio():
+def select_ratio() -> int:
+    """
+        画面の比率を選択する
+    """
     menu = [
         "1. 4:3",
         "2. 16:9"
@@ -47,9 +54,14 @@ def select_ratio():
         print_menu(menu)
         print("解像度の縦横比を数字で選択してください")
         select = input("> ")
+        # 空白ならもう一度聞く
         if select == "": continue
-        if int(select) == RATIO_4_3: return "4:3"
-        elif int(select) == RATIO_16_9: return "16:9"
+
+        # 文字列ならもう一度聞く
+        if not select.isdigit(): continue
+
+        if int(select) == RATIO_4_3: return RATIO_4_3
+        elif int(select) == RATIO_16_9: return RATIO_16_9
 
 def create_file_path(file_name):
     """

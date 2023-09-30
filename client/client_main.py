@@ -6,6 +6,7 @@ from lib.initial_menu import *
 from lib.file_select_tool import *
 from lib.audio_convert_menu import *
 from lib.gif_convert_menu import *
+from lib.resolution_convert_menu import *
 from lib.json_client import *
 from lib.file_client import *
 
@@ -131,6 +132,11 @@ def test_gif_convert_main():
     j, i = gif_conversion_main()
     print("test")
 
+def test_select_ratio():
+    # ok
+    s = select_ratio()
+    print(s)
+
 if __name__ == "__main__":
     # intaractive_shell()
     # print_input_directory()
@@ -142,6 +148,7 @@ if __name__ == "__main__":
     # setup_directory()
     # test_audio_conversion_main()
     # test_gif_convert_main()
-    intaractive_shell()
+    # intaractive_shell()
+    test_select_ratio()
     pass
 
