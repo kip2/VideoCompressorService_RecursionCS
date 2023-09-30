@@ -91,19 +91,6 @@ def crate_json_path(json_name):
     """
     return JSON_DIRECTORY + "/" + json_name
 
-# def main():
-
-#     # jsonファイルを送信
-#     test_send_json_file()
-#     time.sleep(5)
-
-#     # ファイルを送信
-#     test_send_file()
-#     time.sleep(5)
-
-#     # 変換後のファイルを受け取る
-#     recieve_file_client(OUTPUT_DIRECTORY)
-
 def setup_directory():
     """
         最初に、必要なファイルを生成する
