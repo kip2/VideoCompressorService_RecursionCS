@@ -28,6 +28,7 @@ def gif_conversion_main() -> tuple:
     dic["fps"] = str(fps)
 
     # 切り取る秒数
+    # todo: 動画時間を取得して表示する処理がいる
     start_time = input_start_time()
     end_time = input_end_time()
     dic["start_time"] = seconds_to_hms(start_time)
@@ -75,7 +76,7 @@ def input_start_time() -> int:
         start_time = int(input("> "))
         # todo: 一旦、マイナスでなければ通るようにした
         # todo: 動画時間を取得して、引数として渡す。その時間-1秒以上なら、ダメとする
-        if start_time <= 0 : continue
+        if start_time < 0 : continue
         else: return start_time
 
 def seconds_to_hms(seconds):

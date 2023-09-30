@@ -4,7 +4,7 @@ def line_wrap_print(mes):
     """
         行等に|をつけてprintする
     """
-    print("|", end="")
+    print("| ", end="")
     print(mes)
 
 def print_menu(string_arr):

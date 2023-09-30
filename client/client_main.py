@@ -25,6 +25,10 @@ def intaractive_shell():
     """
         対話的にメニューを表示して、動画の変換を行う
     """
+
+    # 必要なディレクトリを作成する
+    setup_directory()
+
     # メニューを表示する
     select = input_loop_initial_menu()
 
@@ -38,7 +42,14 @@ def intaractive_shell():
     elif select == GIF_CONVERSION:
         json_file_path, input_file_path = gif_conversion_main()
 
-    # 
+    # jsonファイルを送信
+    send_file_client(json_file_path)
+
+    # 変換ファイルを送信
+    send_file_client(input_file_path)
+
+    # 変換後のファイルを受け取る
+    recieve_file_client(OUTPUT_DIRECTORY)
 
 # todo: 以下、メニューごとに、JSONファイルにするのに必要なことを対話的に聞くようにすること
 # todo: とにかくjsonファイルを作る目的でいけばかなり素早くコードが書けると思う
@@ -80,26 +91,18 @@ def crate_json_path(json_name):
     """
     return JSON_DIRECTORY + "/" + json_name
 
-def main():
-    # 必要なディレクトリを作成する
-    setup_directory()
+# def main():
 
-    # 該当のjsonファイルを作成する
-    # todo: jsonの保存パスが必要
+#     # jsonファイルを送信
+#     test_send_json_file()
+#     time.sleep(5)
 
-    # ファイルの保存先が必要
-    # todo: fileの保存パスが必要
+#     # ファイルを送信
+#     test_send_file()
+#     time.sleep(5)
 
-    # jsonファイルを送信
-    test_send_json_file()
-    time.sleep(5)
-
-    # ファイルを送信
-    test_send_file()
-    time.sleep(5)
-
-    # 変換後のファイルを受け取る
-    recieve_file_client(OUTPUT_DIRECTORY)
+#     # 変換後のファイルを受け取る
+#     recieve_file_client(OUTPUT_DIRECTORY)
 
 def setup_directory():
     """
@@ -154,6 +157,7 @@ if __name__ == "__main__":
     # main()
     # setup_directory()
     # test_audio_conversion_main()
-    test_gif_convert_main()
+    # test_gif_convert_main()
+    intaractive_shell()
     pass
 

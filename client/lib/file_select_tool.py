@@ -17,6 +17,7 @@ def input_target_file(contents):
     """
         変換対象のファイルを取得
     """
+    # todo: mp4でなければ弾く処理がいる
     while True:
         if len(contents) == 0:
             print("inputフォルダにファイルがありません")
