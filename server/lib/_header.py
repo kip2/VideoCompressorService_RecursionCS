@@ -4,7 +4,8 @@ CHARA_CODE = "UTF-8"
 # type
 TYPE_AUDIO_CONVERSION = "audio conversion"
 TYPE_GIF_CONVERSION = "gif conversion"
-
+TYPE_COMPRESSION = "compression"
+TYPE_RESOLUTION = "resolution"
 
 def request_header(client_request, message_length,data_length):
     """

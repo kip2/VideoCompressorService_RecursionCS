@@ -1,9 +1,10 @@
+import sys
 import os
 from lib.print_tool import *
 
 INPUT_DIRECTORY = "./input"
 
-TMP_DIRECTORY = "tmp"
+JSON_DIRECTORY = "tmp"
 
 def ls_input_directory() -> list:
     """
@@ -17,6 +18,9 @@ def input_target_file(contents):
         変換対象のファイルを取得
     """
     while True:
+        if len(contents) == 0:
+            print("inputフォルダにファイルがありません")
+            sys.exit(1)
         print_menu(contents)
         print("変換するfile名を指定してください")
         file = input("> ")

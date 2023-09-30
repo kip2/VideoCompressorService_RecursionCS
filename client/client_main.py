@@ -18,7 +18,7 @@ GIF_CONVERSION = 4
 INPUT_DIRECTORY = "./input"
 OUTPUT_DIRECTORY = "./output"
 
-TMP_DIRECTORY = "tmp"
+JSON_DIRECTORY = "tmp"
 
 def intaractive_shell():
     """
@@ -59,34 +59,38 @@ def print_resolution_menu():
 def resolution_main():
     pass
 
-def test_has_input_directory():
-    contents = ls_input_directory()
-    while True:
-        print_menu(contents)
-        name = input("> ")
-        t = has_input_directory(contents, name)
-        if t : break
-        print(t)
-    print(t)
+def create_file_path(file_name):
+    """
+        file保存パスを作成する
+    """
+    return FILE_DIRECTORY_PATH + "/" + file_name
 
-def test_send_json_file():
-    # OK
-    # jsonディレクトリはclient内にないといけない
-    filepath = JSON_DIRECTORY_PATH + "/" + "audio_convert.json"
-    send_json_client(filepath)
 
-def test_send_file():
-    filepath = FILE_DIRECTORY_PATH + "/" + "nc53235.mp4"
-    send_file_client(filepath)
+def crate_json_path(json_name):
+    """
+        jsonの保存パスを作成する
+    """
+    return JSON_DIRECTORY_PATH + "/" + json_name
 
 def main():
-    # with TCP_Client(SERVER_ADDRESS, JSON_SERVER_PORT) as c:
+    # 必要なディレクトリを作成する
     setup_directory()
+
+    # 該当のjsonファイルを作成する
+    # todo: jsonの保存パスが必要
+
+    # ファイルの保存先が必要
+    # todo: fileの保存パスが必要
+
+    # jsonファイルを送信
     test_send_json_file()
     time.sleep(5)
+
+    # ファイルを送信
     test_send_file()
     time.sleep(5)
 
+    # 変換後のファイルを受け取る
     recieve_file_client(OUTPUT_DIRECTORY)
 
 def setup_directory():
@@ -104,6 +108,26 @@ def setup_directory():
     # output
     if not os.path.isdir(OUTPUT_DIRECTORY):
         os.mkdir(OUTPUT_DIRECTORY)
+
+def test_has_input_directory():
+    contents = ls_input_directory()
+    while True:
+        print_menu(contents)
+        name = input("> ")
+        t = has_input_directory(contents, name)
+        if t : break
+        print(t)
+    print(t)
+
+def test_send_json_file():
+    # OK
+    # jsonディレクトリはclient内にないといけない
+    filepath = JSON_DIRECTORY_PATH + "/" + "audio_convert.json"
+    send_file_client(filepath)
+
+def test_send_file():
+    filepath = FILE_DIRECTORY_PATH + "/" + "nc53235.mp4"
+    send_file_client(filepath)
 
 if __name__ == "__main__":
     # intaractive_shell()

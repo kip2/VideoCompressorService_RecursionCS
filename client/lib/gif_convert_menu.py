@@ -3,7 +3,7 @@ from lib.json_tool import *
 from lib.print_tool import *
 from lib.file_select_tool import *
 
-TMP_DIRECTORY = "tmp"
+JSON_DIRECTORY = "tmp"
 
 def gif_conversion_main() -> str:
     """
@@ -18,7 +18,6 @@ def gif_conversion_main() -> str:
 
     # 固定比
     # 横幅に合わせて調整するオプション
-    # video_size = "300"
     video_size = input_width_size()
     dic["video_size"] = str(video_size)
     
@@ -27,8 +26,6 @@ def gif_conversion_main() -> str:
     dic["fps"] = str(fps)
 
     # 切り取る秒数
-    # start_time = "00:00:00"
-    # end_time = "10"
     start_time = input_start_time()
     end_time = input_end_time()
     dic["start_time"] = seconds_to_hms(start_time)
@@ -40,7 +37,7 @@ def gif_conversion_main() -> str:
 
     # jsonファイル作成
     json_dic = create_gif_conversion_json(dic)
-    filepath = TMP_DIRECTORY+ "/" + create_json_file_name("gif_convert")
+    filepath = JSON_DIRECTORY+ "/" + create_json_file_name("gif_convert")
     save_json(json_dic, filepath)
     return filepath
 
@@ -92,6 +89,7 @@ def input_width_size() -> int:
     while True:
         print("固定したい横幅を指定してください")
         width = int(input("> "))
+        # todo: 動画の横幅より小さいサイズで確認する
         if width <= 0 : continue
         else: return width
 

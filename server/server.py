@@ -5,37 +5,41 @@ from lib.file_server import *
 
 import shutil
 
-import time
-
 def main():
     with TCP_Server(SERVER_PORT) as s:
         # socket
         sock = s.sock
-        try:
-            # jsonの受け取り
-            json_file_name = recieve_file_server(sock)
+        while True:
+            try:
+                # jsonの受け取り
+                json_file_name = recieve_file_server(sock)
 
-            # fileの受け取り
-            recieved_file_name = recieve_file_server(sock)
+                # fileの受け取り
+                recieved_file_name = recieve_file_server(sock)
 
-            # jsonのfileパスを作成する
-            json_filepath = "tmp/" + json_file_name
+                # jsonのfileパスを作成する
+                json_filepath = "tmp/" + json_file_name
 
-            # jsonのパース
-            command = json_parser(json_filepath)
-            output_file_name = "tmp/" + get_output_file_name(json_filepath)
-            
-            # 処理を行う
-            run_ffmpeg(command)
+                # jsonのパース
+                command = json_parser(json_filepath)
+                output_file_name = "tmp/" + get_output_file_name(json_filepath)
+                
+                # 処理を行う
+                run_ffmpeg(command)
 
-            # JSONの送信処理 <- いる？
-            
-            # fileの送信処理
-            send_file_server(output_file_name, sock)
-            # send_converted_file(output_file_name, sock)
-        finally:
-            # 最後に、受け取ったJSONと受け取ったファイルを削除する処理がいる
-            clear_tmp_directory()
+                # JSONの送信処理 <- いる？
+                
+                # fileの送信処理
+                send_file_server(output_file_name, sock)
+                # send_converted_file(output_file_name, sock)
+            except KeyboardInterrupt:
+                # 終了処理 (Ctrl+C)
+                break
+            finally:
+                # 最後に、受け取ったJSONと受け取ったファイルを削除する処理がいる
+                clear_tmp_directory()
+        sock.close()
+    return
 
 def clear_tmp_directory():
     """
@@ -44,11 +48,11 @@ def clear_tmp_directory():
     target_dir = "tmp"
     shutil.rmtree(target_dir)
 
-def json_receive():
-    """
-        jsonを受け取る処理
-    """
-    return recieve_json_server()
+# def json_receive():
+#     """
+#         jsonを受け取る処理
+#     """
+#     return recieve_file_server()
 
 def get_output_file_name(filepath: str) -> str:
     """
@@ -73,19 +77,26 @@ def json_parser(filepath:str) -> list:
         command = command_generation_audio_conversion(json_dict)
     elif convert_type == TYPE_GIF_CONVERSION:
         command = command_generation_gif_conversion(json_dict)
+    elif convert_type == TYPE_COMPRESSION:
+        # todo: 追加
+        pass
+        # command = 
+    elif convert_type == TYPE_RESOLUTION:
+        # todo: 追加
+        pass
 
     return command
 
-def file_receive():
-    """
-        fileを受け取る処理
-    """
-    return recieve_file_server()
+# def file_receive():
+#     """
+#         fileを受け取る処理
+#     """
+#     return recieve_file_server()
 
-def send_converted_file(filepath):
-    """
-        変換したファイルを受けとる
-    """
+# def send_converted_file(filepath):
+#     """
+#         変換したファイルを受けとる
+#     """
     
 
 #---------------------------------------------------------

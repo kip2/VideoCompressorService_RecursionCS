@@ -42,10 +42,13 @@ def send_file_server(filepath, sock):
         connection.send(filename_bits)
 
         data = f.read(4096)
+        print("Sending...", end="")
         while data:
-            print("Sending...")
+            print(".", end="")
             connection.send(data)
             data = f.read(4096)
+        print()
+        print("complete!")
 
 def recieve_file_server(sock):
     create_file_directory()
