@@ -75,7 +75,7 @@ def compression_high(dic):
     dic["tune"] = "zerolatency"
     dic["preset"] = "veryslow"
     dic["crf"] = "18"
-    dic["bit rate"] = "192k"
+    dic["bit rate"] = "96k"
     return dic
 
 def compression_middle(dic):
@@ -85,7 +85,7 @@ def compression_middle(dic):
     dic["tune"] = "film"
     dic["preset"] = "faster"
     dic["crf"] = "23"
-    dic["bit rate"] = "128k"
+    dic["bit rate"] = "64k"
     return dic
 
 def compression_low(dic):
@@ -95,7 +95,7 @@ def compression_low(dic):
     dic["tune"] = "fastdecode"
     dic["preset"] = "ultrafast"
     dic["crf"] = "28"
-    dic["bit rate"] = "64k"
+    dic["bit rate"] = "32k"
     return dic
 
 

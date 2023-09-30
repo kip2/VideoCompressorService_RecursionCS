@@ -36,10 +36,12 @@ def command_generation_compression(json_dict: dict) -> list:
         "-crf",
         crf,
         # オーディオのコーデック
-        "-C:" + audio_codec,
+        "-c:a",
+        audio_codec,
         # オーディオのビットレート
         "-b:a",
         bit_rate,
+        # bit_rate,
         output_file_path
     ]
     return command
@@ -130,6 +132,24 @@ def run_ffmpeg(command):
 
 #------------------------------------------------------------
 
+def test_compression():
+    mock_dict = {
+        "input": "testmov.mp4",
+        "output": "output.mp4",
+        "video codec": "libx264",
+        "audio codec": "aac",
+        "tune": "fastdecode",
+        "preset":"ultrafast",
+        "crf": "28",
+        "bit rate": "32k",
+        "filesize": 5934367,
+        "type": "compression"
+        
+    }
+    command = command_generation_compression(mock_dict)
+    print(command)
+    run_ffmpeg(command)
+
 def test_resolution():
     mock_dict = {
         "input": "nc53235.mp4",
@@ -185,6 +205,7 @@ def test_gif_convert():
 
 if __name__ == "__main__":
     # test_convert_mp4_to_mp3()
-    test_resolution()
+    # test_resolution()
+    test_compression()
     pass
 

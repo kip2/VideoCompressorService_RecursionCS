@@ -10,6 +10,7 @@ def main():
         # socket
         sock = s.sock
         while True:
+            print("Ctrl + C キーで終了します。")
             try:
                 # jsonの受け取り
                 json_file_name = recieve_file_server(sock)
