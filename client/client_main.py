@@ -79,10 +79,30 @@ def test_send_file():
     filepath = FILE_DIRECTORY_PATH + "/" + "nc53235.mp4"
     send_file_client(filepath)
 
-def test_send_json_and_file():
+def main():
+    setup_directory()
     test_send_json_file()
     time.sleep(5)
     test_send_file()
+    time.sleep(5)
+
+    recieve_file_client(OUTPUT_DIRECTORY)
+
+def setup_directory():
+    """
+        最初に、必要なファイルを生成する
+    """
+    # input
+    if not os.path.isdir(INPUT_DIRECTORY):
+        os.mkdir(INPUT_DIRECTORY)
+
+    # json
+    if not os.path.isdir(JSON_DIRECTORY_PATH):
+        os.mkdir(JSON_DIRECTORY_PATH)
+
+    # output
+    if not os.path.isdir(OUTPUT_DIRECTORY):
+        os.mkdir(OUTPUT_DIRECTORY)
 
 if __name__ == "__main__":
     # intaractive_shell()
@@ -91,5 +111,7 @@ if __name__ == "__main__":
     # audio_conversion_main()
     # input_fps()
     # test_send_json_file()
-    test_send_json_and_file()
+    # main()
+    setup_directory()
     pass
+
