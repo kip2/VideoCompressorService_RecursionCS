@@ -49,6 +49,7 @@ def send_file_server(filepath, sock):
             data = f.read(4096)
         print()
         print("complete!")
+        return 
 
 def recieve_file_server(sock):
     create_file_directory()

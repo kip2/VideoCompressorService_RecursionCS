@@ -27,17 +27,15 @@ def main():
                 # 処理を行う
                 run_ffmpeg(command)
 
-                # JSONの送信処理 <- いる？
-                
                 # fileの送信処理
                 send_file_server(output_file_name, sock)
                 # send_converted_file(output_file_name, sock)
+
+                # 最後に、受け取ったJSONと受け取ったファイルを削除する
+                clear_tmp_directory()
             except KeyboardInterrupt:
                 # 終了処理 (Ctrl+C)
                 break
-            finally:
-                # 最後に、受け取ったJSONと受け取ったファイルを削除する処理がいる
-                clear_tmp_directory()
         sock.close()
     return
 

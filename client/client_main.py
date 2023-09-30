@@ -137,6 +137,16 @@ def test_select_ratio():
     s = select_ratio()
     print(s)
 
+def test_input_resolution():
+    # ok
+    w, h = select_resolution()
+
+    print("w:", w, "h:", h)
+
+def test_resolution_main():
+    t = resolution_main()
+    print(t)
+
 if __name__ == "__main__":
     # intaractive_shell()
     # print_input_directory()
@@ -148,7 +158,10 @@ if __name__ == "__main__":
     # setup_directory()
     # test_audio_conversion_main()
     # test_gif_convert_main()
-    # intaractive_shell()
-    test_select_ratio()
+    # test_select_ratio()
+    # test_input_resolution()
+    # test_resolution_main()
+
+    intaractive_shell()
     pass
 

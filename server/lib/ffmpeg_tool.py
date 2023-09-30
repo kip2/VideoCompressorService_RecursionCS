@@ -17,7 +17,6 @@ def command_generation_resolution(json_dict: dict) -> list:
     # dictをパースする
     input_file_path = "tmp/" + json_dict["input"]
     output_file_path = "tmp/" + json_dict["output"]
-    # todo: これがいる
     scale = json_dict["width"] + ":" + json_dict["height"]
 
     # commandを作成
@@ -26,12 +25,14 @@ def command_generation_resolution(json_dict: dict) -> list:
         "ffmpeg",
         "-i",
         input_file_path,
-        "-filter:v " + scale,       # 変換するvideoの解像度
-        "-c:a copy",        # オーディオの変換は行わず、そのままオーディオを新しいファイルで使う
+        "-vf" ,
+        "scale=" + scale,       # 変換するvideoの解像度
+        "-c:a",
+        "copy",        # オーディオの変換は行わず、そのままオーディオを新しいファイルで使う
         output_file_path
     ]
+    return command
 
-    pass
 
 def command_generation_audio_conversion(json_dict: dict) -> list:
     """
@@ -94,6 +95,20 @@ def run_ffmpeg(command):
 
 #------------------------------------------------------------
 
+def test_resolution():
+    mock_dict = {
+        "input": "nc53235.mp4",
+        "output": "output.mp4",
+        "width": "1280",
+        "height": "720",
+        "filesize": 5934367,
+        "type": "resolution"
+    }
+    command = command_generation_resolution(mock_dict)
+    print(command)
+    run_ffmpeg(command)
+
+
 def test_convert_mp4_to_mp3():
     input_file_name = "input/nc53235.mp4"
     output_file_name = "output/output.mp3"
@@ -135,4 +150,6 @@ def test_gif_convert():
 
 if __name__ == "__main__":
     # test_convert_mp4_to_mp3()
+    test_resolution()
     pass
+

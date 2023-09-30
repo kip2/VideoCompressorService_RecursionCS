@@ -40,10 +40,10 @@ def gif_conversion_main() -> tuple:
 
     # jsonファイル作成
     json_dic = create_gif_conversion_json(dic)
-    json_filepath = JSON_DIRECTORY + "/" + create_json_file_name("gif_convert")
-    save_json(json_dic, json_filepath)
+    json_file_path = JSON_DIRECTORY + "/" + create_json_file_name("gif_convert")
+    save_json(json_dic, json_file_path)
 
-    return (json_filepath, input_file_path)
+    return (json_file_path, input_file_path)
 
 def create_gif_conversion_json(dic) -> dict:
     """

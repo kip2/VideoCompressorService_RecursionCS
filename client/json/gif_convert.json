@@ -1,1 +1,1 @@
-{"input": "nc53235.mp4", "video_size": "300", "fps": "20", "start_time": "00:00:01", "end_time": "15", "output": "output.gif", "filesize": 282907, "type": "gif conversion"}
+{"input": "testmov.mp4", "output": "output.mp4", "width": 1280, "height": 720, "filesize": 5934367, "type": "resolusion"}
