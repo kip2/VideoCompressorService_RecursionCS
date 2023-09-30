@@ -9,31 +9,32 @@ import shutil
 import time
 
 def main():
-    # jsonの受け取り
-    json_file_name = json_receive()
+    try:
+        # jsonの受け取り
+        json_file_name = json_receive()
 
-    # time.sleep(1)
+        # time.sleep(1)
 
-    # fileの受け取り
-    recieved_file_name = file_receive()
+        # fileの受け取り
+        recieved_file_name = file_receive()
 
-    # jsonのfileパスを作成する
-    json_filepath = "tmp/" + json_file_name
+        # jsonのfileパスを作成する
+        json_filepath = "tmp/" + json_file_name
 
-    # jsonのパース
-    command = json_parser(json_filepath)
-    output_file_name = "tmp/" + get_output_file_name(json_filepath)
-    
-    # 処理を行う
-    run_ffmpeg(command)
+        # jsonのパース
+        command = json_parser(json_filepath)
+        output_file_name = "tmp/" + get_output_file_name(json_filepath)
+        
+        # 処理を行う
+        run_ffmpeg(command)
 
-    # JSONの送信処理 <- いる？
-    
-    # fileの送信処理
-    send_converted_file(output_file_name)
-
-    # 最後に、受け取ったJSONと受け取ったファイルを削除する処理がいる
-    clear_tmp_directory()
+        # JSONの送信処理 <- いる？
+        
+        # fileの送信処理
+        send_converted_file(output_file_name)
+    finally:
+        # 最後に、受け取ったJSONと受け取ったファイルを削除する処理がいる
+        clear_tmp_directory()
 
 def clear_tmp_directory():
     """
