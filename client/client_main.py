@@ -80,6 +80,7 @@ def test_send_file():
     send_file_client(filepath)
 
 def main():
+    # with TCP_Client(SERVER_ADDRESS, JSON_SERVER_PORT) as c:
     setup_directory()
     test_send_json_file()
     time.sleep(5)
@@ -111,7 +112,7 @@ if __name__ == "__main__":
     # audio_conversion_main()
     # input_fps()
     # test_send_json_file()
-    # main()
-    setup_directory()
+    main()
+    # setup_directory()
     pass
 
