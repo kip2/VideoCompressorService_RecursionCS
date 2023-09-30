@@ -1,7 +1,6 @@
 from lib.ffmpeg_tool import * 
 from lib._header import *
 from lib.json_tool import *
-from lib.json_server import *
 from lib.file_server import *
 
 import shutil
@@ -9,14 +8,12 @@ import shutil
 import time
 
 def main():
-    with TCP_Server(JSON_SERVER_PORT) as s:
+    with TCP_Server(SERVER_PORT) as s:
         # socket
         sock = s.sock
         try:
             # jsonの受け取り
             json_file_name = recieve_file_server(sock)
-
-            # time.sleep(1)
 
             # fileの受け取り
             recieved_file_name = recieve_file_server(sock)

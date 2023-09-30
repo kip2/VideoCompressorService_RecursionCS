@@ -15,7 +15,7 @@ class TCP_Server:
     def __exit__(self, *args):
         self.sock.close()
 
-def startup_tcp_server(server_address:str = SERVER_ADDRESS, server_port:int = None, listen=5) -> tuple:
+def startup_tcp_server(server_address:str = SERVER_ADDRESS, server_port:int = SERVER_PORT, listen=5) -> tuple:
     """
         TCPサーバーを立てる関数
         connect用のsocketと、(IP_address, PORT)のタプルを返す

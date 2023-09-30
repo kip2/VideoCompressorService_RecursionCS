@@ -9,13 +9,13 @@ NETWORK_SOCKET_TYPE = lib._address_config.NETWORK_SOCKET_TYPE
 # server address
 SERVER_ADDRESS = lib._address_config.SERVER_ADDRESS 
 # server port
-JSON_SERVER_PORT = lib._address_config.JSON_SERVER_PORT
+SERVER_PORT = lib._address_config.SERVER_PORT
 
 FILE_DIRECTORY_PATH = "tmp"
 JSON_DIRECTORY_PATH = "tmp"
 
 # header size
-HEADER_SIZE = JSON_HEADER_SIZE
+HEADER_SIZE = 8
 
 
 def send_file_server(filepath, sock):

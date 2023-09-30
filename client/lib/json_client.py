@@ -9,7 +9,7 @@ NETWORK_SOCKET_TYPE = lib._address_config.NETWORK_SOCKET_TYPE
 # server address
 SERVER_ADDRESS = lib._address_config.SERVER_ADDRESS 
 # server port
-JSON_SERVER_PORT = lib._address_config.JSON_SERVER_PORT
+SERVER_PORT = lib._address_config.SERVER_PORT
 
 # json save directory
 JSON_DIRECTORY_PATH = "json"
@@ -19,7 +19,7 @@ JSON_DIRECTORY_PATH = "json"
 HEADER_SIZE = JSON_HEADER_SIZE
 
 def recieve_json_client(directory_path):
-    with TCP_Client(SERVER_ADDRESS, JSON_SERVER_PORT) as c:
+    with TCP_Client(SERVER_ADDRESS, SERVER_PORT) as c:
         try:
             header = c.sock.recv(HEADER_SIZE)
 
@@ -48,7 +48,7 @@ def recieve_json_client(directory_path):
             print("Error: " + str(e))
 
 def send_json_client(filepath):
-    with TCP_Client(SERVER_ADDRESS, JSON_SERVER_PORT) as c:
+    with TCP_Client(SERVER_ADDRESS, SERVER_PORT) as c:
 
         with open(filepath, "rb") as f:
             f.seek(0, os.SEEK_END)
