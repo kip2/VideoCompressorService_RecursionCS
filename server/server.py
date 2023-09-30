@@ -46,20 +46,12 @@ def clear_tmp_directory():
     target_dir = "tmp"
     shutil.rmtree(target_dir)
 
-# def json_receive():
-#     """
-#         jsonを受け取る処理
-#     """
-#     return recieve_file_server()
-
 def get_output_file_name(filepath: str) -> str:
     """
         outputファイル名を取得する
     """
-    # json load
     json_dict = load_json(filepath)
     return json_dict["output"]
-
 
 def json_parser(filepath:str) -> list:
     """
@@ -76,24 +68,12 @@ def json_parser(filepath:str) -> list:
     elif convert_type == TYPE_GIF_CONVERSION:
         command = command_generation_gif_conversion(json_dict)
     elif convert_type == TYPE_COMPRESSION:
-        # todo:追加
         command = command_generation_compression(json_dict)
     elif convert_type == TYPE_RESOLUTION:
         command = command_generation_resolution(json_dict)
 
     return command
 
-# def file_receive():
-#     """
-#         fileを受け取る処理
-#     """
-#     return recieve_file_server()
-
-# def send_converted_file(filepath):
-#     """
-#         変換したファイルを受けとる
-#     """
-    
 
 #---------------------------------------------------------
 def test_json_parser():

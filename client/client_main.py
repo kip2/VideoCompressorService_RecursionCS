@@ -124,6 +124,10 @@ def test_resolution_main():
     t = resolution_main()
     print(t)
 
+def test_compression_main():
+    j, i = compression_main()
+    print("test")
+
 if __name__ == "__main__":
     # intaractive_shell()
     # print_input_directory()
@@ -138,6 +142,7 @@ if __name__ == "__main__":
     # test_select_ratio()
     # test_input_resolution()
     # test_resolution_main()
+    # test_compression_main()
 
     intaractive_shell()
     pass

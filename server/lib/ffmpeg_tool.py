@@ -7,8 +7,43 @@ def command_generation_compression(json_dict: dict) -> list:
     """
         mp4を圧縮するコマンドを生成
     """
-    # todo:H, M, L でレベルを分けること
-    pass
+    input_file_path = "tmp/" + json_dict["input"]
+    output_file_path = "tmp/" + json_dict["output"]
+    video_codec = json_dict["video codec"]
+    audio_codec = json_dict["audio codec"]
+    tune = json_dict["tune"]
+    preset = json_dict["preset"]
+    crf = json_dict["crf"]
+    bit_rate = json_dict["bit rate"]
+
+    # commandを作成
+    # 以下、一例
+    # ffmpeg -i input.mp4 -c:v libx264 -tune zerolatency -preset ultrafast -crf 40 -c:aac -b:a 32k output.mp4
+    command = [
+        "ffmpeg",
+        "-i",
+        input_file_path,
+        # ビデオのコーデックを指定
+        "-c:v",
+        video_codec,
+        # 最適化
+        "-tune",
+        tune,
+        # プリセット
+        "-preset",
+        preset,
+        # CRF
+        "-crf",
+        crf,
+        # オーディオのコーデック
+        "-C:" + audio_codec,
+        # オーディオのビットレート
+        "-b:a",
+        bit_rate,
+        output_file_path
+    ]
+    return command
+
 
 def command_generation_resolution(json_dict: dict) -> list:
     """
