@@ -1,1 +1,1 @@
-{"input": "testmov.mp4", "output": "output.mp4", "video codec": "libx264", "audio codec": "aac", "tune": "fastdecode", "preset": "ultrafast", "crf": "28", "bit rate": "32k", "filesize": 5934367, "type": "compression"}
+{"input": "testmov.mp4", "output": "output.mp4", "video codec": "libx264", "audio codec": "aac", "tune": "film", "preset": "faster", "crf": "23", "bit rate": "64k", "filesize": 5934367, "type": "compression"}

@@ -52,14 +52,14 @@ def select_compression_menu(dic):
         H,M,L
     """
     menu = [
-        "High",
-        "Middle",
-        "Low"
+        "h. High",
+        "m. Middle",
+        "l. Low"
     ]
 
     while True:
         print_menu(menu)
-        print("圧縮レベルを選択してください(該当の数字を入力)")
+        print('圧縮レベルを選択してください(ex."h" "High" "high")')
         select = input("> ")
         # 空白ならもう一度聞く
         if select == "": continue
