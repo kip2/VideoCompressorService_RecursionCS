@@ -15,3 +15,4 @@ from . import tcp_client
 from . import audio_convert_menu
 from . import gif_convert_menu
 from . import resolution_convert_menu
+from . import compression_convert_menu

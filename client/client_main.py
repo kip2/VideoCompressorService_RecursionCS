@@ -1,4 +1,3 @@
-import time
 import os
 from lib.json_tool import *
 from lib.print_tool import *
@@ -7,6 +6,7 @@ from lib.file_select_tool import *
 from lib.audio_convert_menu import *
 from lib.gif_convert_menu import *
 from lib.resolution_convert_menu import *
+from lib.compression_convert_menu import *
 from lib.json_client import *
 from lib.file_client import *
 
@@ -52,29 +52,6 @@ def intaractive_shell():
     # 変換後のファイルを受け取る
     recieve_file_client(OUTPUT_DIRECTORY)
 
-# todo: 以下、メニューごとに、JSONファイルにするのに必要なことを対話的に聞くようにすること
-# todo: とにかくjsonファイルを作る目的でいけばかなり素早くコードが書けると思う
-# todo: 全て、4つの関数はjsonを返すようにする。それを持って、あとは受け渡しするためのソケットクライアントを一つだけ作成して、その窓口を通してサーバーに渡すことにする
-
-def print_compression_menu():
-    """
-        1.動画の圧縮メニュー
-        H,M,L
-    """
-
-    pass
-
-def compression_main():
-    """
-        対話的に圧縮について聞き出す関数
-    """
-    pass
-
-def print_resolution_menu():
-    """
-        2.解像度の変更メニュー
-    """
-    pass
 
 def create_file_path(file_name):
     """
