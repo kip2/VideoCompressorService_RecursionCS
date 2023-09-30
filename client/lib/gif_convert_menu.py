@@ -9,7 +9,7 @@ from lib.file_select_tool import *
 def gif_conversion_main() -> tuple:
     """
         4.GIFへの変換
-        jsonのファイルパスを返す
+        jsonのファイルパス と 変換ファイルのパスを返す
     """
     dic = {}
     # inputファイル
@@ -108,7 +108,6 @@ def input_fps() -> int:
         fps = int(input("> "))
         if fps < 1 or 60 < fps: continue
         else: return fps
-
 def create_file_path(file_name):
     """
         file保存パスを作成する

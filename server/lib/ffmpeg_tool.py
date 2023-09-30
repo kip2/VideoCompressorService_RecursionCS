@@ -7,12 +7,30 @@ def command_generation_compression(json_dict: dict) -> list:
     """
         mp4を圧縮するコマンドを生成
     """
+    # todo:H, M, L でレベルを分けること
     pass
 
 def command_generation_resolution(json_dict: dict) -> list:
     """
         mp4の解像度を変更するコマンドを生成
     """
+    # dictをパースする
+    input_file_path = "tmp/" + json_dict["input"]
+    output_file_path = "tmp/" + json_dict["output"]
+    # todo: これがいる
+    scale = json_dict["width"] + ":" + json_dict["height"]
+
+    # commandを作成
+    # ffmpeg -i input.mp4 -filter:v scale=1280:720 -c:a copy output.mp4
+    command = [
+        "ffmpeg",
+        "-i",
+        input_file_path,
+        "-filter:v " + scale,       # 変換するvideoの解像度
+        "-c:a copy",        # オーディオの変換は行わず、そのままオーディオを新しいファイルで使う
+        output_file_path
+    ]
+
     pass
 
 def command_generation_audio_conversion(json_dict: dict) -> list:

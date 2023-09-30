@@ -9,7 +9,7 @@ def audio_conversion_main() -> tuple:
     """
         3.音声ファイルへの変換
         音声ファイル変換のメイン対話シェル
-        jsonのfilepathを返す
+        jsonのファイルパス と 変換ファイルのパスを返す
     """
     # inputディレクトリの内容を取得
     contents = ls_input_directory()

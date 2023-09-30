@@ -78,12 +78,10 @@ def json_parser(filepath:str) -> list:
     elif convert_type == TYPE_GIF_CONVERSION:
         command = command_generation_gif_conversion(json_dict)
     elif convert_type == TYPE_COMPRESSION:
-        # todo: 追加
-        pass
-        # command = 
+        # todo:追加
+        command = command_generation_compression(json_dict)
     elif convert_type == TYPE_RESOLUTION:
-        # todo: 追加
-        pass
+        command = command_generation_resolution(json_dict)
 
     return command
 

@@ -13,7 +13,6 @@ SERVER_PORT = lib._address_config.SERVER_PORT
 
 # json save directory
 INPUT_DIRECTORY_PATH = "input"
-# JSON_DIRECTORY_PATH = "temp"
 
 # header size
 HEADER_SIZE = 8

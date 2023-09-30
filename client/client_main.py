@@ -75,9 +75,6 @@ def print_resolution_menu():
     """
     pass
 
-def resolution_main():
-    pass
-
 def create_file_path(file_name):
     """
         file保存パスを作成する
