@@ -12,7 +12,7 @@ SERVER_ADDRESS = lib._address_config.SERVER_ADDRESS
 SERVER_PORT = lib._address_config.SERVER_PORT
 
 # json save directory
-FILE_DIRECTORY_PATH = "input"
+INPUT_DIRECTORY_PATH = "input"
 # JSON_DIRECTORY_PATH = "temp"
 
 # header size
@@ -81,7 +81,7 @@ if __name__ == "__main__":
     # filepath = JSON_DIRECTORY_PATH + "/" +  "room_list.json"
     # send_json_client(filepath)
     # recieve_json_client(JSON_DIRECTORY_PATH)
-    filepath = FILE_DIRECTORY_PATH + "/" + "audio_convert.json"
+    filepath = INPUT_DIRECTORY_PATH + "/" + "audio_convert.json"
     # send_json_client(filepath)
     pass
 

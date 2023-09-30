@@ -18,7 +18,8 @@ GIF_CONVERSION = 4
 INPUT_DIRECTORY = "input"
 OUTPUT_DIRECTORY = "output"
 
-JSON_DIRECTORY = "tmp"
+# JSON_DIRECTORY = "tmp"
+JSON_DIRECTORY = "json"
 
 def intaractive_shell():
     """
@@ -27,10 +28,17 @@ def intaractive_shell():
     # メニューを表示する
     select = input_loop_initial_menu()
 
-    if select == COMPRESSION: compression_main()
-    elif select == RESOLUTION: resolution_main()
-    elif select == AUDIO_CONVERSION: audio_conversion_main()
-    elif select == GIF_CONVERSION: gif_conversion_main()
+    # 分岐して、変換対象のファイルパスと、jsonのパスを作成
+    if select == COMPRESSION: 
+        json_file_path, input_file_path = compression_main()
+    elif select == RESOLUTION: 
+        json_file_path, input_file_path = resolution_main()
+    elif select == AUDIO_CONVERSION:
+        json_file_path, input_file_path = audio_conversion_main()
+    elif select == GIF_CONVERSION:
+        json_file_path, input_file_path = gif_conversion_main()
+
+    # 
 
 # todo: 以下、メニューごとに、JSONファイルにするのに必要なことを対話的に聞くようにすること
 # todo: とにかくjsonファイルを作る目的でいけばかなり素早くコードが書けると思う
@@ -63,14 +71,14 @@ def create_file_path(file_name):
     """
         file保存パスを作成する
     """
-    return FILE_DIRECTORY_PATH + "/" + file_name
+    return INPUT_DIRECTORY + "/" + file_name
 
 
 def crate_json_path(json_name):
     """
         jsonの保存パスを作成する
     """
-    return JSON_DIRECTORY_PATH + "/" + json_name
+    return JSON_DIRECTORY + "/" + json_name
 
 def main():
     # 必要なディレクトリを作成する
@@ -126,8 +134,15 @@ def test_send_json_file():
     send_file_client(filepath)
 
 def test_send_file():
-    filepath = FILE_DIRECTORY_PATH + "/" + "nc53235.mp4"
+    filepath = INPUT_DIRECTORY_PATH + "/" + "nc53235.mp4"
     send_file_client(filepath)
+
+def test_audio_conversion_main():
+    j, i = audio_conversion_main()
+
+def test_gif_convert_main():
+    j, i = gif_conversion_main()
+    print("test")
 
 if __name__ == "__main__":
     # intaractive_shell()
@@ -136,7 +151,9 @@ if __name__ == "__main__":
     # audio_conversion_main()
     # input_fps()
     # test_send_json_file()
-    main()
+    # main()
     # setup_directory()
+    # test_audio_conversion_main()
+    test_gif_convert_main()
     pass
 

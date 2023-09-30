@@ -2,9 +2,9 @@ import sys
 import os
 from lib.print_tool import *
 
-INPUT_DIRECTORY = "./input"
+INPUT_DIRECTORY = "input"
 
-JSON_DIRECTORY = "tmp"
+JSON_DIRECTORY = "json"
 
 def ls_input_directory() -> list:
     """
@@ -42,5 +42,6 @@ def input_output_file_name(extension) -> str:
     while True:
         print("output時のファイル名を指定してください。(指定ない場合はqを入力)")
         filename = input("> ")
+        if filename == "": continue
         if filename == "q": return "output" + extension
         return filename

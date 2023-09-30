@@ -3,9 +3,10 @@ from lib.json_tool import *
 from lib.print_tool import *
 from lib.file_select_tool import *
 
-JSON_DIRECTORY = "tmp"
 
-def gif_conversion_main() -> str:
+# TMP_DIRECTORY = "tmp"
+
+def gif_conversion_main() -> tuple:
     """
         4.GIFへの変換
         jsonのファイルパスを返す
@@ -15,6 +16,7 @@ def gif_conversion_main() -> str:
     contents = ls_input_directory()
     input_file = input_target_file(contents)
     dic["input"] = input_file
+    input_file_path = create_file_path(input_file)
 
     # 固定比
     # 横幅に合わせて調整するオプション
@@ -37,15 +39,17 @@ def gif_conversion_main() -> str:
 
     # jsonファイル作成
     json_dic = create_gif_conversion_json(dic)
-    filepath = JSON_DIRECTORY+ "/" + create_json_file_name("gif_convert")
-    save_json(json_dic, filepath)
-    return filepath
+    json_filepath = JSON_DIRECTORY + "/" + create_json_file_name("gif_convert")
+    save_json(json_dic, json_filepath)
+
+    return (json_filepath, input_file_path)
 
 def create_gif_conversion_json(dic) -> dict:
     """
         gif変換用のjsonファイルを作成
     """
-    dic["filesize"] = os.stat(dic["input"]).st_size
+    input_file_path = create_file_path(dic["input"])
+    dic["filesize"] = os.stat(input_file_path).st_size
     dic["type"] = "gif conversion"
     return dic
 
@@ -103,3 +107,12 @@ def input_fps() -> int:
         fps = int(input("> "))
         if fps < 1 or 60 < fps: continue
         else: return fps
+
+def create_file_path(file_name):
+    """
+        file保存パスを作成する
+    """
+    return INPUT_DIRECTORY + "/" + file_name
+
+if __name__ == "__main__" :
+    gif_conversion_main()
