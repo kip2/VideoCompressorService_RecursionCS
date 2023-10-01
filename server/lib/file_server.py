@@ -11,12 +11,12 @@ SERVER_ADDRESS = lib._address_config.SERVER_ADDRESS
 # server port
 SERVER_PORT = lib._address_config.SERVER_PORT
 
+# directroy path
 FILE_DIRECTORY_PATH = "tmp"
 JSON_DIRECTORY_PATH = "tmp"
 
 # header size
 HEADER_SIZE = 8
-
 
 def send_file_server(filepath, sock):
     """
@@ -52,6 +52,11 @@ def send_file_server(filepath, sock):
         return 
 
 def recieve_file_server(sock):
+    """
+        ファイル受け渡し用のサーバ
+    """
+
+    # 受け渡し用のディレクトリを作成
     create_file_directory()
 
     connection, client_address = sock.accept()

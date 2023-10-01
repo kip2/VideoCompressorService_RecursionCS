@@ -75,9 +75,7 @@ def json_parser(filepath:str) -> list:
     # gif動画に変更する
     elif convert_type == TYPE_GIF_CONVERSION:
         command = command_generation_gif_conversion(json_dict)
-
     return command
-
 
 #---------------------------------------------------------
 def test_json_parser():

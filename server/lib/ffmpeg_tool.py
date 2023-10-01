@@ -1,7 +1,5 @@
 import subprocess
 
-OUTPUT_DIRECTORY = "tmp"
-
 def command_generation_compression(json_dict: dict) -> list:
     """
         mp4を圧縮するコマンドを生成
@@ -45,7 +43,6 @@ def command_generation_compression(json_dict: dict) -> list:
     ]
     return command
 
-
 def command_generation_resolution(json_dict: dict) -> list:
     """
         mp4の解像度を変更するコマンドを生成
@@ -68,7 +65,6 @@ def command_generation_resolution(json_dict: dict) -> list:
         output_file_path
     ]
     return command
-
 
 def command_generation_audio_conversion(json_dict: dict) -> list:
     """
