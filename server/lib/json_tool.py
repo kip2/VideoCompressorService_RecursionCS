@@ -15,20 +15,3 @@ def save_arr_json(arr: list, filepath: str) -> None:
 
 def create_json_file_name(file:str) -> str:
     return file + ".json"
-
-def test_save_arr_json():
-    arr = []
-    arr.append(("name1", "message1"))
-    arr.append(("name3", "message3"))
-    arr.append(("name2", "message2"))
-    filepath = "./temp/test.json"
-    save_arr_json(arr, filepath)
-
-def test_load_arr_json():
-    filepath = "./temp/test.json"
-    d = load_json(filepath)
-    print(d)
-
-if __name__ == "__main__":
-    # test_save_arr_json()
-    test_load_arr_json()

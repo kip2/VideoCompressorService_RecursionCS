@@ -1,5 +1,5 @@
-from lib.ffmpeg_tool import * 
 from lib._header import *
+from lib.ffmpeg_tool import * 
 from lib.json_tool import *
 from lib.file_server import *
 
@@ -35,13 +35,13 @@ def main():
                 # 終了処理 (Ctrl+C)
                 break
             finally:
-                # 最後に、受け取ったJSONと受け取ったファイルを削除する
+                # 最後に、受け取ったファイルとJSONファイルを削除する
                 clear_tmp_directory()
     return
 
 def clear_tmp_directory():
     """
-        tmpディレクトリを削除する処理
+        tmpディレクトリの中身を削除する処理
     """
     target_dir = "tmp"
     shutil.rmtree(target_dir)

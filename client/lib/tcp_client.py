@@ -54,14 +54,15 @@ def encode_message(message: str):
     """
     return message.encode("utf-8")
 
-def test_tcp_class():
-    # sock, addr, port = startup_tcp_client(SERVER_ADDRESS, SERVER_PORT)
-    # print(f"socket = {sock}, address = {addr}, port = {port}")
-    # sock.close()
-    with TCP_Client(SERVER_ADDRESS, SERVER_PORT) as t:
-        print("TCPのテスト")
-        print(t)
+# def test_tcp_class():
+#     # sock, addr, port = startup_tcp_client(SERVER_ADDRESS, SERVER_PORT)
+#     # print(f"socket = {sock}, address = {addr}, port = {port}")
+#     # sock.close()
+#     with TCP_Client(SERVER_ADDRESS, SERVER_PORT) as t:
+#         print("TCPのテスト")
+#         print(t)
     
 
 if __name__ == "__main__":
-    test_tcp_class()
+    # test_tcp_class()
+    pass

@@ -2,11 +2,11 @@ import subprocess
 
 OUTPUT_DIRECTORY = "tmp"
 
-
 def command_generation_compression(json_dict: dict) -> list:
     """
         mp4を圧縮するコマンドを生成
     """
+    # dictをパースする
     input_file_path = "tmp/" + json_dict["input"]
     output_file_path = "tmp/" + json_dict["output"]
     video_codec = json_dict["video codec"]
@@ -32,7 +32,7 @@ def command_generation_compression(json_dict: dict) -> list:
         # プリセット
         "-preset",
         preset,
-        # CRF
+        # CRF(Constant Rate Factor)
         "-crf",
         crf,
         # オーディオのコーデック
@@ -41,7 +41,6 @@ def command_generation_compression(json_dict: dict) -> list:
         # オーディオのビットレート
         "-b:a",
         bit_rate,
-        # bit_rate,
         output_file_path
     ]
     return command
