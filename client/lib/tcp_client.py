@@ -1,6 +1,6 @@
 import socket
 from lib._header import *
-from lib.port_scan import *
+from lib._address_config import *
 
 class TCP_Client:
     def __init__(self, server_address, server_port):

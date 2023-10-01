@@ -30,14 +30,13 @@ def main():
 
                 # fileの送信処理
                 send_file_server(output_file_name, sock)
-                # send_converted_file(output_file_name, sock)
 
-                # 最後に、受け取ったJSONと受け取ったファイルを削除する
-                clear_tmp_directory()
             except KeyboardInterrupt:
                 # 終了処理 (Ctrl+C)
                 break
-        sock.close()
+            finally:
+                # 最後に、受け取ったJSONと受け取ったファイルを削除する
+                clear_tmp_directory()
     return
 
 def clear_tmp_directory():
@@ -64,14 +63,18 @@ def json_parser(filepath:str) -> list:
     # 変換タイプの指定
     convert_type = json_dict["type"]
     # ffmpegで使うコマンドに直す
-    if convert_type == TYPE_AUDIO_CONVERSION:
-        command = command_generation_audio_conversion(json_dict)
-    elif convert_type == TYPE_GIF_CONVERSION:
-        command = command_generation_gif_conversion(json_dict)
-    elif convert_type == TYPE_COMPRESSION:
+    # 動画圧縮
+    if convert_type == TYPE_COMPRESSION:
         command = command_generation_compression(json_dict)
+    # 動画の解像度の変更
     elif convert_type == TYPE_RESOLUTION:
         command = command_generation_resolution(json_dict)
+    # 音声ファイルに変更する
+    elif convert_type == TYPE_AUDIO_CONVERSION:
+        command = command_generation_audio_conversion(json_dict)
+    # gif動画に変更する
+    elif convert_type == TYPE_GIF_CONVERSION:
+        command = command_generation_gif_conversion(json_dict)
 
     return command
 
@@ -88,14 +91,5 @@ def test_command_run():
     command = test_json_parser()
     run_ffmpeg(command)
 
-def test_json_server():
-    # OK
-    recieve_json_server()
-
 if __name__ == "__main__":
-    # test_command_run()
-    # test_command_generation_gif_conversion()
-    # test_gif_convert()
-    # test_json_server()
     main()
-    # clear_tmp_directory()

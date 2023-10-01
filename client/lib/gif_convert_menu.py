@@ -108,6 +108,7 @@ def input_fps() -> int:
         fps = int(input("> "))
         if fps < 1 or 60 < fps: continue
         else: return fps
+
 def create_file_path(file_name):
     """
         file保存パスを作成する

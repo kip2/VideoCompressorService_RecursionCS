@@ -7,8 +7,6 @@ from . import initial_menu
 from . import json_client
 from . import json_tool
 
-from . import port_scan
-
 from . import print_tool
 from . import tcp_client
 
