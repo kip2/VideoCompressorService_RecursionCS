@@ -68,8 +68,9 @@ choco install ffmpeg
 
 ### server
 
-serverディレクトリをそのまま、server側に設置してください。
-その後、server.pyを起動してください。
+1. serverディレクトリをそのまま、server側に設置してください。
+
+2.server.pyを起動してください。
 
 ```shell
 $ python server.py
@@ -78,10 +79,25 @@ $ python server.py
 $ python3 server.py
 ```
 
+3. server側の準備はこれでOKです。
+
 ### client
 
-clientディレクトリを設置してください。
+1. clientディレクトリを設置してください。
 
-その後、変換したいファイルを、inputディレクトリに入れてください
+2. 変換したいファイルを、inputディレクトリに入れてください
+   注意：2GBまでのファイルにしか対応していません。
 
+3. client.pyを起動してください。
+
+```shell
+$ python client.py
+
+# 環境によってはこちら
+$ python3 client.py
+```
+
+4. ファイルの変換、必要なオプションを聞かれるので、質問に答えてください。
+
+5. 変換が行われ、変換後のファイルがoutputディレクトリに入っています。
 
