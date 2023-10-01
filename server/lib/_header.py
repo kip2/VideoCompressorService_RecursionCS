@@ -7,6 +7,15 @@ TYPE_GIF_CONVERSION = "gif conversion"
 TYPE_COMPRESSION = "compression"
 TYPE_RESOLUTION = "resolution"
 
+# directroy path
+FILE_DIRECTORY = "tmp"
+JSON_DIRECTORY = "tmp"
+
+# header size
+HEADER_SIZE = 8
+
+# ------------------header method--------------------------------
+
 def request_header(client_request, message_length,data_length):
     """
         送信用のheaderを作成する関数

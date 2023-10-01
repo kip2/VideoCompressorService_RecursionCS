@@ -1,8 +1,8 @@
 import os
 
 import lib
-from lib.tcp_server import *
 from lib._header import *
+from lib.tcp_server import *
 
 # network socket type
 NETWORK_SOCKET_TYPE = lib._address_config.NETWORK_SOCKET_TYPE 
@@ -11,14 +11,7 @@ SERVER_ADDRESS = lib._address_config.SERVER_ADDRESS
 # server port
 SERVER_PORT = lib._address_config.SERVER_PORT
 
-# directroy path
-FILE_DIRECTORY_PATH = "tmp"
-JSON_DIRECTORY_PATH = "tmp"
-
-# header size
-HEADER_SIZE = 8
-
-def send_file_server(filepath, sock):
+def send_file_server(filepath:str, sock) -> None:
     """
         filepathのjsonファイルを送信する
     """
@@ -51,7 +44,7 @@ def send_file_server(filepath, sock):
         print("complete!")
         return 
 
-def recieve_file_server(sock):
+def recieve_file_server(sock) -> str:
     """
         ファイル受け渡し用のサーバ
     """
@@ -75,7 +68,7 @@ def recieve_file_server(sock):
         if data_length == 0:
             raise Exception("No data to read from client.")
 
-        with open(os.path.join(FILE_DIRECTORY_PATH, filename), "wb+") as f:
+        with open(os.path.join(FILE_DIRECTORY, filename), "wb+") as f:
             while data_length > 0:
                 data = connection.recv(data_length if data_length <= stream_rate else stream_rate)
                 f.write(data)
@@ -88,19 +81,19 @@ def recieve_file_server(sock):
         print("Error: " + str(e))
     return filename
         
-def create_file_directory():
+def create_file_directory() -> None:
     """
         file受け渡しをする fileフォルダを作成する
     """
-    if not os.path.exists(FILE_DIRECTORY_PATH):
-        os.makedirs(FILE_DIRECTORY_PATH)
+    if not os.path.exists(FILE_DIRECTORY):
+        os.makedirs(FILE_DIRECTORY)
 
-def create_json_directory():
+def create_json_directory() -> None:
     """
         json受け渡しをするjsonフォルダを作成する
     """
-    if not os.path.exists(JSON_DIRECTORY_PATH):
-        os.makedirs(JSON_DIRECTORY_PATH)
+    if not os.path.exists(JSON_DIRECTORY):
+        os.makedirs(JSON_DIRECTORY)
 
 if __name__ == "__main__":
     recieve_file_server()

@@ -1,23 +1,19 @@
 from lib._header import *
 from lib.print_tool import *
 
-def print_initial_menu():
-    """
-        基本的なメニューを表示する
-    """
-    arr = ["1.動画を圧縮",
-            "2.解像度を変更",
-            "3.音声ファイルに変換",
-            "4.GIFへの変換",
-            ]
-    print_menu(arr)
-
 def input_loop_initial_menu():
     """
         initial_menuの項目をループして問い合わせる
     """
+    
+    menu = ["1.動画を圧縮",
+            "2.解像度を変更",
+            "3.音声ファイルに変換",
+            "4.GIFへの変換",
+            ]
+
     while True:
-        print_initial_menu()
+        print_menu(menu)
         ipt = input("> ")
 
         # 数字でない
@@ -25,6 +21,8 @@ def input_loop_initial_menu():
 
         # 数字に変換
         ipt = int(ipt)
+
+        # モードを選択
         if ipt == COMPRESSION: return COMPRESSION
         elif ipt == RESOLUTION: return RESOLUTION
         elif ipt == AUDIO_CONVERSION: return AUDIO_CONVERSION

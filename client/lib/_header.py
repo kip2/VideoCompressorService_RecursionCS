@@ -1,8 +1,8 @@
 # 文字コード
 CHARA_CODE = "UTF-8"
 
-# json header size
-JSON_HEADER_SIZE = 8
+# header size
+HEADER_SIZE = 8
 
 # type
 TYPE_AUDIO_CONVERSION = "audio conversion"

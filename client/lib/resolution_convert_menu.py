@@ -3,10 +3,11 @@ from lib.print_tool import *
 from lib.file_select_tool import *
 from lib.json_tool import *
 
+# mode
 RATIO_4_3 = 1
 RATIO_16_9 = 2
 
-def resolution_main():
+def resolution_main() -> tuple:
     """
         2.解像度を変換
         解像度変更用のメイン対話シェル
@@ -36,7 +37,7 @@ def resolution_main():
 
     return (json_file_path, input_file_path)
 
-def create_resolution_json(dic) -> dict:
+def create_resolution_json(dic: dict) -> dict:
     """
         解像度変換用のjsonファイルを作成
     """
@@ -100,7 +101,7 @@ def select_4_3() -> tuple:
         if int(select) == 9: return (160, 120)
 
 
-def select_16_9():
+def select_16_9() -> tuple:
     """
         16:9の画面解像度を選択してもらう
     """
@@ -163,7 +164,7 @@ def select_ratio() -> int:
         if int(select) == 1: return RATIO_4_3
         elif int(select) == 2: return RATIO_16_9
 
-def create_file_path(file_name):
+def create_file_path(file_name: str) -> str:
     """
         file保存パスを作成する
     """

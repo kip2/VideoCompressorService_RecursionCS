@@ -2,7 +2,7 @@ lines = 30
 
 def line_wrap_print(mes):
     """
-        行等に|をつけてprintする
+        行頭に|をつけてprintする
     """
     print("| ", end="")
     print(mes)

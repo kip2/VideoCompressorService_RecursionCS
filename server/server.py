@@ -1,9 +1,9 @@
+import shutil
+
 from lib._header import *
 from lib.ffmpeg_tool import * 
 from lib.json_tool import *
 from lib.file_server import *
-
-import shutil
 
 def main() -> None:
     with TCP_Server(SERVER_PORT) as s:

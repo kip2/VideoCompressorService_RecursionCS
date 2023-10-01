@@ -11,10 +11,6 @@ SERVER_ADDRESS = lib._address_config.SERVER_ADDRESS
 # server port
 SERVER_PORT = lib._address_config.SERVER_PORT
 
-
-# header size
-HEADER_SIZE = 8
-
 def recieve_file_client(directory_path):
     with TCP_Client(SERVER_ADDRESS, SERVER_PORT) as c:
         try:
