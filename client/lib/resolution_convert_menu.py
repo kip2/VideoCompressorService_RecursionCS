@@ -22,7 +22,7 @@ def resolution_main() -> tuple:
     input_file_path = create_file_path(input_file)
 
     # outputファイル名
-    output_file_name = input_output_file_name(".mp4")
+    output_file_name = input_output_file_name("mp4")
     dic["output"] = output_file_name
 
     # 解像度を選択してもらう

@@ -33,36 +33,23 @@ def startup_tcp_client(server_address:str, server_port: int) -> tuple:
         print(e)
         return 
 
-def send_tcp_header(sock, header_message):
+def send_tcp_header(sock, header_message:str) -> None:
     """
         TCPクライアントからheaderを送信する
     """
     header = request_header(header_message, 0, 0)
     sock.send(header)
 
-def send_tcp_message(sock, message):
+def send_tcp_message(sock, message: str) -> None:
     """
         TCPクライアントからメッセージを送信する
     """
     message = encode_message(message)
     sock.send(message)
 
-def encode_message(message: str):
+def encode_message(message: str) -> bytes:
     """
         utf-8 の 
         str -> byte へのエンコード
     """
     return message.encode("utf-8")
-
-# def test_tcp_class():
-#     # sock, addr, port = startup_tcp_client(SERVER_ADDRESS, SERVER_PORT)
-#     # print(f"socket = {sock}, address = {addr}, port = {port}")
-#     # sock.close()
-#     with TCP_Client(SERVER_ADDRESS, SERVER_PORT) as t:
-#         print("TCPのテスト")
-#         print(t)
-    
-
-if __name__ == "__main__":
-    # test_tcp_class()
-    pass

@@ -1,7 +1,7 @@
 from lib._header import *
 from lib.print_tool import *
 
-def input_loop_initial_menu():
+def input_loop_initial_menu() -> int:
     """
         initial_menuの項目をループして問い合わせる
     """

@@ -11,7 +11,7 @@ from lib.compression_convert_menu import *
 from lib.file_client import *
 
 
-def intaractive_shell():
+def intaractive_shell() -> None:
     """
         対話的にメニューを表示して、動画の変換を行う
     """
@@ -42,20 +42,20 @@ def intaractive_shell():
     recieve_file_client(OUTPUT_DIRECTORY)
 
 
-def create_file_path(file_name):
+def create_file_path(file_name: str) -> str:
     """
         file保存パスを作成する
     """
     return INPUT_DIRECTORY + "/" + file_name
 
 
-def crate_json_path(json_name):
+def crate_json_path(json_name: str) -> str:
     """
         jsonの保存パスを作成する
     """
     return JSON_DIRECTORY + "/" + json_name
 
-def setup_directory():
+def setup_directory() -> None:
     """
         最初に、必要なファイルを生成する
     """

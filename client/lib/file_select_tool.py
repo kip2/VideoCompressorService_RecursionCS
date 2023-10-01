@@ -10,7 +10,7 @@ def ls_input_directory() -> list:
     contents = os.listdir(INPUT_DIRECTORY)
     return contents
 
-def input_target_file(contents):
+def input_target_file(contents: list) -> str:
     """
         変換対象のファイルを取得
     """
@@ -25,7 +25,7 @@ def input_target_file(contents):
         if has_input_directory(contents, file):
             return file
 
-def has_input_directory(contents, name):
+def has_input_directory(contents: list, name: str) -> bool:
     """
         指定のファイルがinputフォルダにあるか確認する
     """
@@ -33,7 +33,7 @@ def has_input_directory(contents, name):
         if name == item: return True
     return False
 
-def input_output_file_name(extension) -> str:
+def input_output_file_name(extension:str) -> str:
     """
         outputファイル名を指定してもらう
     """
@@ -41,5 +41,5 @@ def input_output_file_name(extension) -> str:
         print("output時のファイル名を指定してください。(指定ない場合はqを入力)")
         filename = input("> ")
         if filename == "": continue
-        if filename == "q": return "output" + extension
+        if filename == "q": return "output" + "." + extension
         return filename

@@ -34,7 +34,7 @@ def gif_conversion_main() -> tuple:
     dic["end_time"] = str(end_time)
 
     # outputファイル名
-    output_file_name = input_output_file_name(".gif")
+    output_file_name = input_output_file_name("gif")
     dic["output"] = output_file_name
 
     # jsonファイル作成
@@ -78,7 +78,7 @@ def input_start_time() -> int:
         if start_time < 0 : continue
         else: return start_time
 
-def seconds_to_hms(seconds):
+def seconds_to_hms(seconds: int) -> str:
     """
         秒数を00:00:00形式に変換する
     """
@@ -107,7 +107,7 @@ def input_fps() -> int:
         if fps < 1 or 60 < fps: continue
         else: return fps
 
-def create_file_path(file_name):
+def create_file_path(file_name:str) -> str:
     """
         file保存パスを作成する
     """
