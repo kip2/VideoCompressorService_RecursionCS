@@ -4,7 +4,6 @@ from . import file_client
 from . import file_select_tool
 from . import initial_menu
 
-from . import json_client
 from . import json_tool
 
 from . import print_tool

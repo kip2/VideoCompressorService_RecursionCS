@@ -1,10 +1,7 @@
 import sys
 import os
+from lib._header import *
 from lib.print_tool import *
-
-INPUT_DIRECTORY = "input"
-
-JSON_DIRECTORY = "json"
 
 def ls_input_directory() -> list:
     """

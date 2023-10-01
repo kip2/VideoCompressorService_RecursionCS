@@ -1,10 +1,5 @@
+from lib._header import *
 from lib.print_tool import *
-
-# initial_menu
-COMPRESSION = 1
-RESOLUTION = 2
-AUDIO_CONVERSION = 3
-GIF_CONVERSION = 4
 
 def print_initial_menu():
     """

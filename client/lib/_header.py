@@ -8,6 +8,18 @@ JSON_HEADER_SIZE = 8
 TYPE_AUDIO_CONVERSION = "audio conversion"
 TYPE_GIF_CONVERSION = "gif conversion"
 
+# initial_menu
+COMPRESSION = 1
+RESOLUTION = 2
+AUDIO_CONVERSION = 3
+GIF_CONVERSION = 4
+
+# directory
+INPUT_DIRECTORY = "input"
+OUTPUT_DIRECTORY = "output"
+JSON_DIRECTORY = "json"
+
+#-----------------header mehod------------------------
 
 def request_header(client_request, message_length,data_length):
     """

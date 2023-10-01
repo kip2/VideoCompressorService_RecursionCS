@@ -1,15 +1,13 @@
 import os
+from lib._header import *
 from lib.json_tool import *
 from lib.file_select_tool import *
-
-JSON_DIRECTORY = "json"
-INPUT_DIRECTORY = "input"
 
 def audio_conversion_main() -> tuple:
     """
         3.音声ファイルへの変換
         音声ファイル変換のメイン対話シェル
-        jsonのファイルパス と 変換ファイルのパスを返す
+        jsonのファイルパスと変換ファイルのパスを返す
     """
     # inputディレクトリの内容を取得
     contents = ls_input_directory()

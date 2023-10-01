@@ -1,10 +1,9 @@
 import os
+from lib._header import *
 from lib.json_tool import *
 from lib.print_tool import *
 from lib.file_select_tool import *
 
-
-# TMP_DIRECTORY = "tmp"
 
 def gif_conversion_main() -> tuple:
     """
@@ -97,7 +96,6 @@ def input_width_size() -> int:
         # todo: 動画の横幅より小さいサイズで確認する
         if width <= 0 : continue
         else: return width
-
 
 def input_fps() -> int:
     """

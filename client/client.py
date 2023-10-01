@@ -1,4 +1,5 @@
 import os
+from lib._header import *
 from lib.json_tool import *
 from lib.print_tool import *
 from lib.initial_menu import *
@@ -7,20 +8,8 @@ from lib.audio_convert_menu import *
 from lib.gif_convert_menu import *
 from lib.resolution_convert_menu import *
 from lib.compression_convert_menu import *
-from lib.json_client import *
 from lib.file_client import *
 
-# initial_menu
-COMPRESSION = 1
-RESOLUTION = 2
-AUDIO_CONVERSION = 3
-GIF_CONVERSION = 4
-
-INPUT_DIRECTORY = "input"
-OUTPUT_DIRECTORY = "output"
-
-# JSON_DIRECTORY = "tmp"
-JSON_DIRECTORY = "json"
 
 def intaractive_shell():
     """
@@ -75,13 +64,15 @@ def setup_directory():
         os.mkdir(INPUT_DIRECTORY)
 
     # json
-    if not os.path.isdir(JSON_DIRECTORY_PATH):
-        os.mkdir(JSON_DIRECTORY_PATH)
+    if not os.path.isdir(JSON_DIRECTORY):
+        os.mkdir(JSON_DIRECTORY)
 
     # output
     if not os.path.isdir(OUTPUT_DIRECTORY):
         os.mkdir(OUTPUT_DIRECTORY)
 
+
+# ------------------test code--------------------------
 def test_has_input_directory():
     contents = ls_input_directory()
     while True:
@@ -95,11 +86,7 @@ def test_has_input_directory():
 def test_send_json_file():
     # OK
     # jsonディレクトリはclient内にないといけない
-    filepath = JSON_DIRECTORY_PATH + "/" + "audio_convert.json"
-    send_file_client(filepath)
-
-def test_send_file():
-    filepath = INPUT_DIRECTORY_PATH + "/" + "nc53235.mp4"
+    filepath = JSON_DIRECTORY + "/" + "audio_convert.json"
     send_file_client(filepath)
 
 def test_audio_conversion_main():
