@@ -114,7 +114,6 @@ def input_width_size() -> int:
     while True:
         print("固定したい横幅を指定してください")
         width = int(input("> "))
-        # todo: 動画の横幅より小さいサイズで確認する
         if width <= 0 : continue
         else: return width
 
