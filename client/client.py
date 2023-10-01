@@ -120,6 +120,19 @@ def test_input_target_file():
     input_target_file(l)
 
 
+def test_get_vide_length():
+    file = "testmov.mp4"
+    video_path = create_file_path(file)
+    get_video_length(video_path)
+
+
+def test_input_time():
+    input_file_path = create_file_path("testmov.mp4")
+    video_length = get_video_length(input_file_path)
+    start_time = input_start_time(video_length)
+    end_time = input_end_time(start_time, video_length)
+    return 
+
 if __name__ == "__main__":
     # intaractive_shell()
     # print_input_directory()
@@ -137,6 +150,8 @@ if __name__ == "__main__":
     # test_compression_main()
 
     # test_input_target_file()
-    intaractive_shell()
+    # intaractive_shell()
+    # test_get_vide_length()
+    test_input_time()
     pass
 

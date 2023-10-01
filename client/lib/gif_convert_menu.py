@@ -1,3 +1,4 @@
+import subprocess
 import os
 from lib._header import *
 from lib.json_tool import *
@@ -27,9 +28,9 @@ def gif_conversion_main() -> tuple:
     dic["fps"] = str(fps)
 
     # 切り取る秒数
-    # todo: 動画時間を取得して表示する処理がいる
-    start_time = input_start_time()
-    end_time = input_end_time()
+    video_length = get_video_length(input_file_path)
+    start_time = input_start_time(video_length)
+    end_time = input_end_time(start_time, video_length)
     dic["start_time"] = seconds_to_hms(start_time)
     dic["end_time"] = str(end_time)
 
@@ -53,30 +54,50 @@ def create_gif_conversion_json(dic) -> dict:
     dic["type"] = "gif conversion"
     return dic
 
-def input_end_time() -> int:
+def input_end_time(start_time, video_length) -> int:
     """
         動画を切り取るエンドタイムを指定してもらう
     """
     while True:
-        print("動画を切り取る終了時間を指定してください")
+        print(f"動画を切り取る終了時間を指定してください({start_time} ~ {video_length})")
         end_time = int(input("> "))
-        # todo: 一旦、マイナスでなければ通るようにした
-        # todo: 動画時間を取得して、引数として渡しておく。その時刻と、引数で渡すスタートタイム以下あるいは以上の時刻ならやり直す
-        if end_time <= 0 : continue
-        else: return end_time
+        if end_time < 0 :
+            print_error_messege("マイナスは指定できません")
+            continue
+        elif video_length <= end_time: 
+            print_error_messege("動画時間を超えています")
+            continue
+        elif end_time <= start_time:
+            print_error_messege("開始時間より手前を指定しています")
+            continue
+        # 切り出し開始時間より長く動画時間より短ければOK
+        elif start_time < end_time and end_time < video_length: return end_time
 
 
-def input_start_time() -> int:
+def input_start_time(video_length) -> int:
     """
         動画を切り取るスタートタイムを指定してもらう
     """
     while True:
-        print("動画を切り取る開始時間を指定してください")
+        print(f"動画を切り取る開始時間を指定してください(0 ~ {video_length})")
         start_time = int(input("> "))
-        # todo: 一旦、マイナスでなければ通るようにした
-        # todo: 動画時間を取得して、引数として渡す。その時間-1秒以上なら、ダメとする
-        if start_time < 0 : continue
-        else: return start_time
+        # 0以下ならやり直し
+        if start_time < 0 :
+            print_error_messege("マイナスは指定できません")
+            continue
+        elif video_length <= start_time: 
+            print_error_messege("動画時間を超えています")
+            continue
+        # 動画時間より短ければOK
+        elif start_time < video_length: return start_time
+
+def print_error_messege(message):
+    """
+        エラーメッセージを表示する
+    """
+    print("-" * 50)
+    print(message)
+    print("-" * 50)
 
 def seconds_to_hms(seconds: int) -> str:
     """
@@ -112,6 +133,17 @@ def create_file_path(file_name:str) -> str:
         file保存パスを作成する
     """
     return INPUT_DIRECTORY + "/" + file_name
+
+def get_video_length(video_path):
+    """
+        動画時間を取得する
+        小数以下は切り捨て
+    """
+    command = ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", video_path]
+    output = subprocess.check_output(command)
+    # 小数以下は切り捨て
+    video_length = int(float(output))
+    return video_length
 
 if __name__ == "__main__" :
     gif_conversion_main()
