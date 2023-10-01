@@ -29,9 +29,7 @@ def has_input_directory(contents: list, name: str) -> bool:
     """
         指定のファイルがinputフォルダにあるか確認する
     """
-    for item in contents:
-        if name == item: return True
-    return False
+    return name in contents
 
 def input_output_file_name(extension:str) -> str:
     """
@@ -43,3 +41,4 @@ def input_output_file_name(extension:str) -> str:
         if filename == "": continue
         if filename == "q": return "output" + "." + extension
         return filename
+
