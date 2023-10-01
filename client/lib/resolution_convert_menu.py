@@ -31,7 +31,7 @@ def resolution_main():
 
     # jsonファイル作成
     json_dic = create_resolution_json(dic)
-    json_file_path = JSON_DIRECTORY + "/" + create_json_file_name("resolution_convert")
+    json_file_path = JSON_DIRECTORY + "/" + add_json_extension("resolution_convert")
     save_json(json_dic, json_file_path)
 
     return (json_file_path, input_file_path)

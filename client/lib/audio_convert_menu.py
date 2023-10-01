@@ -21,7 +21,7 @@ def audio_conversion_main() -> tuple:
     d = create_audio_conversion_json(input_file)
 
     # jsonファイルを作成する
-    json_file_path = JSON_DIRECTORY+ "/" + create_json_file_name("audio_convert")
+    json_file_path = JSON_DIRECTORY+ "/" + add_json_extension("audio_convert")
     save_json(d, json_file_path)
 
     # 変換対象のファイルパスを作成

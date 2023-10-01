@@ -31,7 +31,7 @@ def compression_main():
 
     # jsonファイル作成
     json_dic = create_compression_json(dic)
-    json_file_path = JSON_DIRECTORY + "/" + create_json_file_name("compression_convert")
+    json_file_path = JSON_DIRECTORY + "/" + add_json_extension("compression_convert")
     save_json(json_dic, json_file_path)
 
     return (json_file_path, input_file_path)

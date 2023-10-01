@@ -5,7 +5,7 @@ from lib.file_server import *
 
 import shutil
 
-def main():
+def main() -> None:
     with TCP_Server(SERVER_PORT) as s:
         # socket
         sock = s.sock
@@ -39,7 +39,7 @@ def main():
                 clear_tmp_directory()
     return
 
-def clear_tmp_directory():
+def clear_tmp_directory() -> None:
     """
         tmpディレクトリの中身を削除する処理
     """
