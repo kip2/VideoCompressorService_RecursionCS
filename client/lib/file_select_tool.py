@@ -22,8 +22,11 @@ def input_target_file(contents: list) -> str:
         print_menu(contents)
         print("変換するfile名を指定してください")
         file = input("> ")
+        # ファイルの存在を確認
         if has_input_directory(contents, file):
-            return file
+            if file[-4:] == "mp4":
+                return file
+            print("拡張子が mp4 ではありません")
 
 def has_input_directory(contents: list, name: str) -> bool:
     """

@@ -115,6 +115,10 @@ def test_compression_main():
     j, i = compression_main()
     print("test")
 
+def test_input_target_file():
+    l = ls_input_directory()
+    input_target_file(l)
+
 if __name__ == "__main__":
     # intaractive_shell()
     # print_input_directory()
@@ -131,6 +135,7 @@ if __name__ == "__main__":
     # test_resolution_main()
     # test_compression_main()
 
-    intaractive_shell()
+    test_input_target_file()
+    # intaractive_shell()
     pass
 
