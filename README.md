@@ -66,7 +66,7 @@ brew install ffmpeg
 choco install ffmpeg
 ```
 
-### server
+## server
 
 1. serverディレクトリをそのまま、server側に設置してください。
 
@@ -81,7 +81,7 @@ $ python3 server.py
 
 3. server側の準備はこれでOKです。
 
-### client
+## client
 
 1. clientディレクトリを設置してください。
 
