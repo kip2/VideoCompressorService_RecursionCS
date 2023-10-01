@@ -1,2 +1,87 @@
 # VideoCompressorService_RecursionCS
-RecursionCSのバックエンドプロジェクトの課題です
+
+# 概要
+
+clientからmp4ファイルをserverに渡し、変換するプログラムです。
+
+以下の4種類の変換に対応しています。
+
+1. 動画の圧縮
+2. 動画の解像度の変更
+3. mp4からmp3ファイルへの変更(音声が入った動画のみ)
+4. 切り出し時間を指定してgif形式へ変換する
+
+# 使い方
+
+## 準備
+
+### 事前準備
+
+変換にffmpegを使用しています。
+ffmpegをインストールしてください。
+
+#### Linux
+
+##### Ubuntu/Debian
+
+```shell
+sudo apt update
+sudo apt install ffmpeg
+```
+
+##### Fedora
+
+```shell
+sudo dnf install ffmpeg
+```
+
+##### CentOS/RHEL
+
+```shell
+sudo yum install epel-release
+sudo yum install ffmpeg
+```
+
+##### Arch Linux
+
+```shell
+sudo pacman -S ffmpeg
+```
+
+#### macOS
+
+```shell
+brew install ffmpeg
+```
+
+#### Windows
+
+1. 公式サイトのダウンロードセクションにアクセスして、Windows版のffmpegをダウンロードします。
+2. ダウンロードしたZIPを適当な場所に展開します。
+3. 展開したffmpeg.exeのパスをシステムのPATH環境変数に追加します。
+
+##### Chocolatey
+
+```shell
+choco install ffmpeg
+```
+
+### server
+
+serverディレクトリをそのまま、server側に設置してください。
+その後、server.pyを起動してください。
+
+```shell
+$ python server.py
+
+# 環境によってはこちら
+$ python3 server.py
+```
+
+### client
+
+clientディレクトリを設置してください。
+
+その後、変換したいファイルを、inputディレクトリに入れてください
+
+
