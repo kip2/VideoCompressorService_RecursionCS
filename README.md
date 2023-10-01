@@ -15,6 +15,15 @@ clientからmp4ファイルをserverに渡し、変換するプログラムで�
 
 ## 準備
 
+### serverアドレス
+
+ハードコードしています。
+
+client/lib/_address_config.py
+server/lib/_address_config.py
+
+の両方を編集してください。
+
 ### 事前準備
 
 変換にffmpegを使用しています。
