@@ -66,6 +66,8 @@ brew install ffmpeg
 choco install ffmpeg
 ```
 
+--- 
+
 ## server
 
 1. serverディレクトリをそのまま、server側に設置してください。
