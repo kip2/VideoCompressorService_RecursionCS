@@ -8,6 +8,8 @@ def ls_input_directory() -> list:
         inputフォルダの内容を配列にする
     """
     contents = os.listdir(INPUT_DIRECTORY)
+    # dotファイルを除く
+    contents = [content for content in contents if not content.startswith(".")]
     return contents
 
 def input_target_file(contents: list) -> str:
@@ -44,4 +46,3 @@ def input_output_file_name(extension:str) -> str:
         if filename == "": continue
         if filename == "q": return "output" + "." + extension
         return filename
-

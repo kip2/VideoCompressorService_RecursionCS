@@ -144,5 +144,3 @@ def get_video_length(video_path):
     video_length = int(float(output))
     return video_length
 
-if __name__ == "__main__" :
-    gif_conversion_main()
