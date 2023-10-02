@@ -38,6 +38,3 @@ def server_exit(sock):
     """
     sock.close()
     sys.exit(0)
-
-if __name__ == "__main__":
-    pass

@@ -94,7 +94,3 @@ def create_json_directory() -> None:
     """
     if not os.path.exists(JSON_DIRECTORY):
         os.makedirs(JSON_DIRECTORY)
-
-if __name__ == "__main__":
-    recieve_file_server()
-    pass

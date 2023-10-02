@@ -106,7 +106,4 @@ def create_file_path(file_name):
     """
     return INPUT_DIRECTORY + "/" + file_name
 
-if __name__ == "__main__":
-    pass
-
 

@@ -77,17 +77,5 @@ def json_parser(filepath:str) -> list:
         command = command_generation_gif_conversion(json_dict)
     return command
 
-#---------------------------------------------------------
-def test_json_parser():
-    # OK
-    filepath = "tmp/" + "audio_convert.json"
-    command = json_parser(filepath)
-    return command
-
-def test_command_run():
-    # OK
-    command = test_json_parser()
-    run_ffmpeg(command)
-
 if __name__ == "__main__":
     main()

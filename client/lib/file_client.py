@@ -70,11 +70,4 @@ def send_file_client(filepath):
                 c.sock.send(data)
                 data = f.read(4096)
 
-if __name__ == "__main__":
-    # filepath = JSON_DIRECTORY + "/" +  "room_list.json"
-    # send_json_client(filepath)
-    # recieve_json_client(JSON_DIRECTORY)
-    filepath = INPUT_DIRECTORY + "/" + "audio_convert.json"
-    # send_json_client(filepath)
-    pass
 
