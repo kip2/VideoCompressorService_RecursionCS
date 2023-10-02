@@ -16,7 +16,7 @@ def main():
         if ipt.lower() == "y":
             address = input_address()
             port = input_port()
-            s.save_config(address, port)
+            s.save_config(address, int(port))
             print("-"*50)
             print("設定を変更しました。")
             print(f"address: {s.address}")

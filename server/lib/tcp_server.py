@@ -1,7 +1,6 @@
 import os
 import sys
 import socket
-from ._address_config import *
 from ._header import *
 from .json_tool import *
 
@@ -22,7 +21,7 @@ class TCP_Server:
             connect用のsocketと、(IP_address, PORT)のタプルを返す
         """
         try:
-            sock = socket.socket(NETWORK_SOCKET_TYPE, socket.SOCK_STREAM) 
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
             sock.bind((server_address, server_port))
             sock.listen(listen)
             return (sock, server_address, server_port)
