@@ -21,7 +21,7 @@ config.jsonにサーバのアドレスとポート番号が設定してありま
 
 #### 変更方法
 
-config.pyを実行して、従って変更してください
+server、client、それぞれで config.py を実行して、指示に従って変更してください
 
 ```shell
 python config.py
