@@ -4,19 +4,22 @@ from lib._header import *
 from lib.ffmpeg_tool import * 
 from lib.json_tool import *
 from lib.file_server import *
+from lib.tcp_server import *
 
 def main() -> None:
-    with TCP_Server(SERVER_PORT) as s:
+    server = Server()
+
+    with TCP_Server(server.address, server.port) as s:
         # socket
         sock = s.sock
         while True:
             print("Ctrl + C キーで終了します。")
             try:
                 # jsonの受け取り
-                json_file_name = recieve_file_server(sock)
+                json_file_name = server.recieve_file_server(sock)
 
                 # fileの受け取り
-                recieved_file_name = recieve_file_server(sock)
+                recieved_file_name = server.recieve_file_server(sock)
 
                 # jsonのfileパスを作成する
                 json_filepath = "tmp/" + json_file_name
@@ -32,7 +35,7 @@ def main() -> None:
                 print("-"*50)
 
                 # fileの送信処理
-                send_file_server(output_file_name, sock)
+                server.send_file_server(output_file_name, sock)
 
             except KeyboardInterrupt:
                 # 終了処理 (Ctrl+C)
