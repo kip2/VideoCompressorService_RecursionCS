@@ -1,7 +1,7 @@
 import os
-from lib.print_tool import *
-from lib.file_select_tool import *
-from lib.json_tool import *
+from .print_tool import *
+from .file_select_tool import *
+from .json_tool import *
 
 # mode
 RATIO_4_3 = 1

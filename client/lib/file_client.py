@@ -1,15 +1,6 @@
 import os
-
-import lib
-from lib.tcp_client import *
-from lib._header import *
-
-# network socket type
-NETWORK_SOCKET_TYPE = lib._address_config.NETWORK_SOCKET_TYPE 
-# server address
-SERVER_ADDRESS = lib._address_config.SERVER_ADDRESS 
-# server port
-SERVER_PORT = lib._address_config.SERVER_PORT
+from ._header import *
+from .tcp_client import *
 
 def recieve_file_client(directory_path):
     with TCP_Client(SERVER_ADDRESS, SERVER_PORT) as c:

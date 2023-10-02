@@ -1,7 +1,7 @@
 import sys
 import socket
-from lib._address_config import *
-from lib._header import *
+from ._address_config import *
+from ._header import *
 
 class TCP_Server:
     def __init__(self, port):

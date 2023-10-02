@@ -1,8 +1,8 @@
 import os
-from lib._header import *
-from lib.print_tool import *
-from lib.file_select_tool import *
-from lib.json_tool import *
+from ._header import *
+from .print_tool import *
+from .file_select_tool import *
+from .json_tool import *
 
 def compression_main():
     """

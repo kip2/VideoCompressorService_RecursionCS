@@ -1,9 +1,9 @@
 import subprocess
 import os
-from lib._header import *
-from lib.json_tool import *
-from lib.print_tool import *
-from lib.file_select_tool import *
+from ._header import *
+from .json_tool import *
+from .print_tool import *
+from .file_select_tool import *
 
 
 def gif_conversion_main() -> tuple:

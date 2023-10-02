@@ -56,6 +56,3 @@ def input_output_file_name(extension:str) -> str:
         if filename == "": continue
         if filename == "q": return "output" + "." + extension
         return filename
-
-if __name__ == "__main__":
-    assert not is_input_directory_empty(), "false"

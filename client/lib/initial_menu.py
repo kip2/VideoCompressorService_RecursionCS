@@ -1,5 +1,5 @@
-from lib._header import *
-from lib.print_tool import *
+from ._header import *
+from .print_tool import *
 
 def input_loop_initial_menu() -> int:
     """
