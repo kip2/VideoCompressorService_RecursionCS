@@ -150,8 +150,8 @@ if __name__ == "__main__":
     # test_compression_main()
 
     # test_input_target_file()
-    # intaractive_shell()
+    intaractive_shell()
     # test_get_vide_length()
-    test_input_time()
+    # test_input_time()
     pass
 
