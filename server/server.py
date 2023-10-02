@@ -36,10 +36,10 @@ def main() -> None:
                 break
             finally:
                 # 最後に、受け取ったファイルとJSONファイルを削除する
-                clear_tmp_directory()
+                remove_tmp_directory()
     return
 
-def clear_tmp_directory() -> None:
+def remove_tmp_directory() -> None:
     """
         tmpディレクトリの中身を削除する処理
     """

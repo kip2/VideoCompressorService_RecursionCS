@@ -43,19 +43,6 @@ def intaractive_shell() -> None:
     remove_json_directory()
 
 
-def create_file_path(file_name: str) -> str:
-    """
-        file保存パスを作成する
-    """
-    return INPUT_DIRECTORY + "/" + file_name
-
-
-def crate_json_path(json_name: str) -> str:
-    """
-        jsonの保存パスを作成する
-    """
-    return JSON_DIRECTORY + "/" + json_name
-
 def setup_directory() -> None:
     """
         最初に、必要なファイルを生成する
