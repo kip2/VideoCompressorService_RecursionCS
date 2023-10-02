@@ -7,14 +7,16 @@ from lib.audio_convert_menu import *
 from lib.gif_convert_menu import *
 from lib.resolution_convert_menu import *
 from lib.compression_convert_menu import *
-from lib.file_client import *
 from lib.file_select_tool import *
+from lib.tcp_client import *
 
 
 def main() -> None:
     """
         対話的にメニューを表示して、動画の変換を行う
     """
+    # client classを生成する
+    client = Client()
 
     # 必要なディレクトリを作成する
     setup_directory()
@@ -23,6 +25,7 @@ def main() -> None:
     if is_input_directory_empty():
         print("inputディレクトリが空です。inputディレクトリに変換したいファイルを設置してください。")
         sys.exit(1)
+
 
     # メニューを表示する
     select = input_loop_initial_menu()
@@ -38,20 +41,19 @@ def main() -> None:
         json_file_path, input_file_path = gif_conversion_main()
 
     # jsonファイルを送信
-    send_file_client(json_file_path)
+    client.send_file_client(json_file_path)
 
     # 変換ファイルを送信
-    send_file_client(input_file_path)
+    client.send_file_client(input_file_path)
 
     # 仕切りを表示
     print("-"*50)
 
     # 変換後のファイルを受け取る
-    recieve_file_client(OUTPUT_DIRECTORY)
+    client.recieve_file_client(OUTPUT_DIRECTORY)
 
     # jsonディレクトリを削除する
     remove_json_directory()
-
 
 def setup_directory() -> None:
     """
@@ -76,6 +78,21 @@ def remove_json_directory() -> None:
     target_dir = "json"
     shutil.rmtree(target_dir)
 
+def test_config_json():
+    filepath = "config.json"
+    d = load_json(filepath)
+    print(d)
+    print(d["webserver"]["address"])
+
+def test_class_client():
+    c = Client()
+    print(c.server_address)
+    print(c.server_port)
+    print(c.server_socket_type)
+
+
 if __name__ == "__main__":
+    # test_config_json()
+    # test_class_client()
     main()
 
