@@ -1,10 +1,7 @@
 import os
 import shutil
 from lib._header import *
-from lib.json_tool import *
-from lib.print_tool import *
 from lib.initial_menu import *
-from lib.file_select_tool import *
 from lib.audio_convert_menu import *
 from lib.gif_convert_menu import *
 from lib.resolution_convert_menu import *
