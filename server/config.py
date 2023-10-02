@@ -1,24 +1,30 @@
 import sys
 import re
-from lib.tcp_client import *
-from lib.print_tool import *
+from lib.tcp_server import *
 
 def main():
-    c = Client()
+    s = Server()
 
     print("現在の設定は以下のようになっています")
-    print(f"server: {c.server_address}")
-    print(f"port: {c.server_port}")
     print("-"*50)
-    ipt = input("設定を変更しますか？(y/n)")
-    
-    if ipt.lower() == "y":
-        address = input_address()
-        port = input_port()
-    elif ipt.lower() == "n":
-        sys.exit()
-
-    c.save_config(address, port)
+    print(f"address: {s.address}")
+    print(f"port: {s.port}")
+    print("-"*50)
+    while True:
+        ipt = input("設定を変更しますか？(y/n) > ")
+        
+        if ipt.lower() == "y":
+            address = input_address()
+            port = input_port()
+            s.save_config(address, port)
+            print("-"*50)
+            print("設定を変更しました。")
+            print(f"address: {s.address}")
+            print(f"port: {s.port}")
+            print("-"*50)
+            sys.exit()
+        elif ipt.lower() == "n":
+            sys.exit()
 
 def input_address():
     """

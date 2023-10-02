@@ -7,18 +7,25 @@ def main():
     c = Client()
 
     print("現在の設定は以下のようになっています")
-    print(f"server: {c.server_address}")
-    print(f"port: {c.server_port}")
     print("-"*50)
-    ipt = input("設定を変更しますか？(y/n)")
-    
-    if ipt.lower() == "y":
-        address = input_address()
-        port = input_port()
-    elif ipt.lower() == "n":
-        sys.exit()
-
-    c.save_config(address, port)
+    print(f"server address: {c.server_address}")
+    print(f"server port: {c.server_port}")
+    print("-"*50)
+    while True:
+        ipt = input("設定を変更しますか？(y/n) > ")
+        
+        if ipt.lower() == "y":
+            address = input_address()
+            port = input_port()
+            c.save_config(address, port)
+            print("-"*50)
+            print("設定を変更しました。")
+            print(f"server address: {c.server_address}")
+            print(f"server port: {c.server_port}")
+            print("-"*50)
+            sys.exit()
+        elif ipt.lower() == "n":
+            sys.exit()
 
 def input_address():
     """
