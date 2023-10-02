@@ -17,12 +17,20 @@ clientからmp4ファイルをserverに渡し、変換するプログラムで�
 
 ### serverアドレス
 
-ハードコードしています。
+config.jsonにサーバのアドレスとポート番号が設定してあります。
 
-client/lib/_address_config.py
-server/lib/_address_config.py
+#### 変更方法
 
-の両方を編集してください。
+config.pyを実行して、従って変更してください
+
+```shell
+python config.py
+
+# 環境によってはこちら
+python3 config.py
+```
+
+---
 
 ### 事前準備
 
