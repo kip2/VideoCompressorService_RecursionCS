@@ -43,6 +43,9 @@ def main() -> None:
     # 変換ファイルを送信
     send_file_client(input_file_path)
 
+    # 仕切りを表示
+    print("-"*50)
+
     # 変換後のファイルを受け取る
     recieve_file_client(OUTPUT_DIRECTORY)
 

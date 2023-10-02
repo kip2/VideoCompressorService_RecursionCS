@@ -24,13 +24,10 @@ def recieve_file_client(directory_path):
                 while data_length > 0:
                     data = c.sock.recv(data_length if data_length <= stream_rate else stream_rate)
                     f.write(data)
-                    # print(f"recieved {len(data)} bytes")
-                    print(".", end="")
                     data_length -= len(data)
-                    # print(data_length)
 
             print()
-            print("Finished downloading the file from client.")
+            print("Finished download!")
         except Exception as e:
             print("Error: " + str(e))
     return

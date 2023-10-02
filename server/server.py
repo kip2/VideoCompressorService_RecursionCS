@@ -28,6 +28,9 @@ def main() -> None:
                 # 処理を行う
                 run_ffmpeg(command)
 
+                # 仕切りを表示
+                print("-"*50)
+
                 # fileの送信処理
                 send_file_server(output_file_name, sock)
 

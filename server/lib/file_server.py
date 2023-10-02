@@ -29,7 +29,6 @@ def send_file_server(filepath:str, sock) -> None:
         data = f.read(4096)
         print("Sending...", end="")
         while data:
-            print(".", end="")
             connection.send(data)
             data = f.read(4096)
         print()
@@ -64,7 +63,6 @@ def recieve_file_server(sock) -> str:
             while data_length > 0:
                 data = connection.recv(data_length if data_length <= stream_rate else stream_rate)
                 f.write(data)
-                # print(f"recieved {len(data)} bytes")
                 data_length -= len(data)
                 print(data_length)
 
