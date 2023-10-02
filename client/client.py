@@ -1,3 +1,4 @@
+import sys
 import os
 import shutil
 from lib._header import *
@@ -7,6 +8,7 @@ from lib.gif_convert_menu import *
 from lib.resolution_convert_menu import *
 from lib.compression_convert_menu import *
 from lib.file_client import *
+from lib.file_select_tool import *
 
 
 def main() -> None:
@@ -16,6 +18,11 @@ def main() -> None:
 
     # 必要なディレクトリを作成する
     setup_directory()
+
+    # inputディレクトリが空だった場合終了する
+    if is_input_directory_empty():
+        print("inputディレクトリが空です。inputディレクトリに変換したいファイルを設置してください。")
+        sys.exit(1)
 
     # メニューを表示する
     select = input_loop_initial_menu()
