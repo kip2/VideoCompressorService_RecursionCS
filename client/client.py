@@ -9,7 +9,7 @@ from lib.compression_convert_menu import *
 from lib.file_client import *
 
 
-def intaractive_shell() -> None:
+def main() -> None:
     """
         対話的にメニューを表示して、動画の変換を行う
     """
@@ -67,5 +67,5 @@ def remove_json_directory() -> None:
     shutil.rmtree(target_dir)
 
 if __name__ == "__main__":
-    intaractive_shell()
+    main()
 
