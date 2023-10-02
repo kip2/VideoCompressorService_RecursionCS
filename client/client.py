@@ -10,6 +10,28 @@ from lib.compression_convert_menu import *
 from lib.file_select_tool import *
 from lib.tcp_client import *
 
+def setup_directory() -> None:
+    """
+        最初に、必要なファイルを生成する
+    """
+    # input
+    if not os.path.isdir(INPUT_DIRECTORY):
+        os.mkdir(INPUT_DIRECTORY)
+
+    # json
+    if not os.path.isdir(JSON_DIRECTORY):
+        os.mkdir(JSON_DIRECTORY)
+
+    # output
+    if not os.path.isdir(OUTPUT_DIRECTORY):
+        os.mkdir(OUTPUT_DIRECTORY)
+
+def remove_json_directory() -> None:
+    """
+        tmpディレクトリの中身を削除する処理
+    """
+    target_dir = "json"
+    shutil.rmtree(target_dir)
 
 def main() -> None:
     """
@@ -25,7 +47,6 @@ def main() -> None:
     if is_input_directory_empty():
         print("inputディレクトリが空です。inputディレクトリに変換したいファイルを設置してください。")
         sys.exit(1)
-
 
     # メニューを表示する
     select = input_loop_initial_menu()
@@ -55,44 +76,17 @@ def main() -> None:
     # jsonディレクトリを削除する
     remove_json_directory()
 
-def setup_directory() -> None:
-    """
-        最初に、必要なファイルを生成する
-    """
-    # input
-    if not os.path.isdir(INPUT_DIRECTORY):
-        os.mkdir(INPUT_DIRECTORY)
+from lib.json_tool import *
 
-    # json
-    if not os.path.isdir(JSON_DIRECTORY):
-        os.mkdir(JSON_DIRECTORY)
+def test_json_config():
+    config = load_json("config.json")
+    print(config["webserver"]["address"])
 
-    # output
-    if not os.path.isdir(OUTPUT_DIRECTORY):
-        os.mkdir(OUTPUT_DIRECTORY)
-
-def remove_json_directory() -> None:
-    """
-        tmpディレクトリの中身を削除する処理
-    """
-    target_dir = "json"
-    shutil.rmtree(target_dir)
-
-def test_config_json():
-    filepath = "config.json"
-    d = load_json(filepath)
-    print(d)
-    print(d["webserver"]["address"])
-
-def test_class_client():
     c = Client()
-    print(c.server_address)
-    print(c.server_port)
-    print(c.server_socket_type)
-
+    c.save_config("127.0.0.1", 9001)
 
 if __name__ == "__main__":
-    # test_config_json()
-    # test_class_client()
-    main()
+    # main()
+    test_json_config()
+    
 

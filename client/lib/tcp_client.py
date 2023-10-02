@@ -34,16 +34,29 @@ class TCP_Client:
             return 
 
 class Client():
-    def __init__(self):
-        self.config_load()
+    # configファイルのパス
+    config_path = "config.json"
 
-    def config_load(self):
+    def __init__(self):
+        self.load_config()
+
+    def load_config(self):
         """
-            jsonファイルから必要な情報を読み込む
+            configファイルから必要な情報を読み込む
         """
-        config_dict = load_json("config.json")
+        config_dict = load_json(self.config_path)
         self.server_address = config_dict["webserver"]["address"]
         self.server_port = config_dict["webserver"]["port"]
+
+    def save_config(self, address:str, port:int):
+        """
+            configファイルに書き込む
+        """
+        config_dict = {}
+        config_dict["webserver"] = {}
+        config_dict["webserver"]["address"] = address
+        config_dict["webserver"]["port"] = port
+        save_json(config_dict, self.config_path)
 
     def recieve_file_client(self,directory_path):
         """
