@@ -76,17 +76,7 @@ def main() -> None:
     # jsonディレクトリを削除する
     remove_json_directory()
 
-from lib.json_tool import *
-
-def test_json_config():
-    config = load_json("config.json")
-    print(config["webserver"]["address"])
-
-    c = Client()
-    c.save_config("127.0.0.1", 9001)
-
 if __name__ == "__main__":
-    # main()
-    test_json_config()
+    main()
     
 
