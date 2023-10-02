@@ -1,7 +1,10 @@
 import sys
 import os
-from lib._header import *
-from lib.print_tool import *
+from ._header import *
+from .print_tool import *
+
+# INPUT_DIRECTORY = "../input"
+
 
 def ls_input_directory() -> list:
     """
@@ -26,7 +29,7 @@ def input_target_file(contents: list) -> str:
         # ファイルの存在を確認
         if has_input_directory(contents, file):
             # 拡張子がmp4ならOK
-            if file[-4:] == "mp4":
+            if file[-4:] == ".mp4":
                 return file
             print("拡張子が mp4 ではありません")
 
@@ -35,6 +38,13 @@ def has_input_directory(contents: list, name: str) -> bool:
         指定のファイルがinputフォルダにあるか確認する
     """
     return name in contents
+
+def is_input_directory_empty() -> bool:
+    """
+        inputディレクトが空かどうかを判定する
+    """
+    l = ls_input_directory()
+    return not bool(l)
 
 def input_output_file_name(extension:str) -> str:
     """
@@ -46,3 +56,6 @@ def input_output_file_name(extension:str) -> str:
         if filename == "": continue
         if filename == "q": return "output" + "." + extension
         return filename
+
+if __name__ == "__main__":
+    assert not is_input_directory_empty(), "false"
