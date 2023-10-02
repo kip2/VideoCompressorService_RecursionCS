@@ -1,4 +1,5 @@
 import os
+import shutil
 from lib._header import *
 from lib.json_tool import *
 from lib.print_tool import *
@@ -41,6 +42,9 @@ def intaractive_shell() -> None:
     # 変換後のファイルを受け取る
     recieve_file_client(OUTPUT_DIRECTORY)
 
+    # jsonディレクトリを削除する
+    remove_json_directory()
+
 
 def create_file_path(file_name: str) -> str:
     """
@@ -71,6 +75,12 @@ def setup_directory() -> None:
     if not os.path.isdir(OUTPUT_DIRECTORY):
         os.mkdir(OUTPUT_DIRECTORY)
 
+def remove_json_directory() -> None:
+    """
+        tmpディレクトリの中身を削除する処理
+    """
+    target_dir = "json"
+    shutil.rmtree(target_dir)
 
 if __name__ == "__main__":
     intaractive_shell()
