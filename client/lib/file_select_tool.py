@@ -3,9 +3,6 @@ import os
 from ._header import *
 from .print_tool import *
 
-# INPUT_DIRECTORY = "../input"
-
-
 def ls_input_directory() -> list:
     """
         inputフォルダの内容を配列にする
