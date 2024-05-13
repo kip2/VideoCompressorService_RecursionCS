@@ -39,30 +39,11 @@ ffmpegをインストールしてください。
 
 #### Linux
 
-##### Ubuntu/Debian
+##### Ubuntu
 
 ```shell
 sudo apt update
 sudo apt install ffmpeg
-```
-
-##### Fedora
-
-```shell
-sudo dnf install ffmpeg
-```
-
-##### CentOS/RHEL
-
-```shell
-sudo yum install epel-release
-sudo yum install ffmpeg
-```
-
-##### Arch Linux
-
-```shell
-sudo pacman -S ffmpeg
 ```
 
 #### macOS
@@ -76,12 +57,6 @@ brew install ffmpeg
 1. 公式サイトのダウンロードセクションにアクセスして、Windows版のffmpegをダウンロードします。
 2. ダウンロードしたZIPを適当な場所に展開します。
 3. 展開したffmpeg.exeのパスをシステムのPATH環境変数に追加します。
-
-##### Chocolatey
-
-```shell
-choco install ffmpeg
-```
 
 --- 
 
